@@ -17,7 +17,7 @@
       <guid>http://www.achter.be/blog/20160226_hugo_git_deploy_automation/</guid>
       <description>
 
-&lt;p&gt;As some of you know, I&amp;rsquo;m running this site through with the [Hugo][1] site generator. Hugo has many advantages, but one big disadvantage is that to update my site it takes a lot of steps:&lt;/p&gt;
+&lt;p&gt;As some of you know, I&amp;rsquo;m running this site through with the &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt; site generator. Hugo has many advantages, but one big disadvantage is that to update my site it takes a lot of steps:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Write the markdown code&lt;/li&gt;
@@ -29,7 +29,7 @@
 
 &lt;p&gt;Although only 5 steps this usually takes around 20 minutes to complete.&lt;/p&gt;
 
-&lt;p&gt;Earlier this evening I stumbled upon a [blogpost on Gandi cookbook] about auto deploy sites through git on gandi simple hosting. I followed their tutorial and added an extra bash script so that now all it takes me is 1 command and a commit message.&lt;/p&gt;
+&lt;p&gt;Earlier this evening I stumbled upon a [blogpost on Gandi cookbook][2] about auto deploy sites through git on gandi simple hosting. I followed their tutorial and added an extra bash script so that now all it takes me is 1 command and a commit message.&lt;/p&gt;
 
 &lt;p&gt;To make sure that the info doesn&amp;rsquo;t get lost and for those having using hugo, unix and gandi simple hosting all combined, these are the steps necessary:&lt;/p&gt;
 
@@ -93,6 +93,8 @@ echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the 
 12. Do an update to check if it works&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;DISCLAIMER&lt;/em&gt;: For me it all works very well, but don&amp;rsquo;t change any of the files on the simple hosting without using git or you will have to restart the procedure.&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://gnadi-cookbook.readthedocs.org/en/latest/paas/auto-git-deployment.html&#34;&gt;http://gnadi-cookbook.readthedocs.org/en/latest/paas/auto-git-deployment.html&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
