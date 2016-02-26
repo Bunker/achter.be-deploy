@@ -19,15 +19,15 @@
 
 &lt;ul&gt;
 &lt;li&gt;set ls -all to la
-alias la=&amp;lsquo;ls -all&amp;rsquo;&lt;/li&gt;
+&lt;code&gt;alias la=&#39;ls -all&#39;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Built in Raspberry pi temperature check
-alias checktemp=&amp;lsquo;/opt/vc/bin/vcgencmd measure_temp&amp;rsquo;&lt;/li&gt;
+&lt;code&gt;alias checktemp=&#39;/opt/vc/bin/vcgencmd measure_temp&#39;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Check your external IP through icanhazip.com
-alias ip=&amp;lsquo;curl icanhazip.com&amp;rsquo;&lt;/li&gt;
+&lt;code&gt;alias ip=&#39;curl icanhazip.com&#39;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Check your external IP details through icanhazip.com
-alias iplookup=&amp;lsquo;echo $(curl -s ipinfo.io/$(curl -s icanhazip.com))&amp;rsquo;&lt;/li&gt;
+&lt;code&gt;alias iplookup=&#39;echo $(curl -s ipinfo.io/$(curl -s icanhazip.com))&#39;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Directly go to my dropbox folder on OS X
-alias dropbox=&amp;lsquo;cd /Volumes/Macintosh\ HD/Dropbox/&amp;rsquo;&lt;/li&gt;
+&lt;code&gt;alias dropbox=&#39;cd /Volumes/Macintosh\ HD/Dropbox/&#39;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
