@@ -96,8 +96,8 @@ git push
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;code&gt;&amp;lt;?php
-`git pull`;                         // This will execute the `git pull` command on your instance
-header(&amp;quot;Cache-Control: max-age=1&amp;quot;); // Lower the cache while we&#39;re here so the changes take effect faster
+`git pull`;                         // This will execute the `git pull` command on your instanceheader
+(&amp;quot;Cache-Control: max-age=1&amp;quot;); // Lower the cache while we&#39;re here so the changes take effect faster
 echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the file is in the right place by browsing to the URL
 ?&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
