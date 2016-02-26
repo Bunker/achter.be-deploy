@@ -15,7 +15,9 @@
       <pubDate>Thu, 12 Nov 2015 12:33:04 +0100</pubDate>
       
       <guid>http://www.achter.be/blog/20151112_usefull_aliases/</guid>
-      <description>&lt;p&gt;This is a list of aliases I like to use on either Mac OS X and/or Linux&lt;/p&gt;
+      <description>&lt;p&gt;This is a list of aliases I like to use on either Mac OS X and/or Linux.&lt;/p&gt;
+
+&lt;p&gt;add them in ~/.bash_profile to use over reboots.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;set ls -all to la
