@@ -80,10 +80,13 @@ git push
 &lt;p&gt;&lt;code&gt;git clone https://github.com/[username]/[repositoryname].git .&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Check that the files are there
-&lt;code&gt;ls -la&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Check that the files are there&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;li&gt;&lt;p&gt;Make a php file with the following content, I named it pull.php&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;code&gt;ls -la&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Make a php file with the following content, I named it pull.php&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;code&gt;nano pull.php&lt;/code&gt;&lt;/p&gt;
@@ -94,8 +97,11 @@ git push
 `git pull`;                         // This will execute the `git pull` command on your instance
 header(&amp;quot;Cache-Control: max-age=1&amp;quot;); // Lower the cache while we&#39;re here so the changes take effect faster
 echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the file is in the right place by browsing to the URL
-?&amp;gt;&lt;/code&gt;
-8. Make the php file executable&lt;/p&gt;
+?&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Make the php file executable&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;code&gt;chmod +x pull.php&lt;/code&gt;&lt;/p&gt;
 

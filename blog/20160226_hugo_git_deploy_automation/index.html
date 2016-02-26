@@ -112,10 +112,13 @@ git push
 <p><code>git clone https://github.com/[username]/[repositoryname].git .</code></p>
 
 <ol>
-<li><p>Check that the files are there
-<code>ls -la</code></p></li>
+<li>Check that the files are there</li>
+</ol>
 
-<li><p>Make a php file with the following content, I named it pull.php</p></li>
+<p><code>ls -la</code></p>
+
+<ol>
+<li>Make a php file with the following content, I named it pull.php</li>
 </ol>
 
 <p><code>nano pull.php</code></p>
@@ -126,8 +129,11 @@ git push
 `git pull`;                         // This will execute the `git pull` command on your instance
 header(&quot;Cache-Control: max-age=1&quot;); // Lower the cache while we're here so the changes take effect faster
 echo &quot;hello!&quot;;                      // So you can confirm the file is in the right place by browsing to the URL
-?&gt;</code>
-8. Make the php file executable</p>
+?&gt;</code></p>
+
+<ol>
+<li>Make the php file executable</li>
+</ol>
 
 <p><code>chmod +x pull.php</code></p>
 
