@@ -45,6 +45,141 @@
       <div class="posts">
          
         <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20150610_openhab_raspberry_pi/">Openhab install on Raspberry Pi</a></h2>
+          <span class="post-date">Jun 10, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/diy">diy</a>&nbsp;
+		  	
+			          #<a href="/tags/tutorial">tutorial</a>&nbsp;
+		  	
+			          #<a href="/tags/home-automation">home automation</a>&nbsp;
+		  	
+			          #<a href="/tags/raspberry-pi">raspberry pi</a>&nbsp;
+		  	
+			          #<a href="/tags/openhab">openhab</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				
+
+<p>![Openhab logo][4_img_link]</p>
+
+<p>This post is my guide for installing and configuring <a href="http://www.openhab.org/">Openhab</a> on the <a href="https://www.raspberrypi.org/">Raspberry Pi</a>.</p>
+
+<h1 id="install-openhab:4ec75b23a0cd9226405c51e993ebc751">Install openhab</h1>
+
+<ol>
+<li><p>Upgrade and update apt-get
+<code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></p></li>
+
+<li><p>do a update of the firmware. These are 2 steps you should always do before installing something new.
+<code>sudo rpi-update</code></p></li>
+
+<li><p>make directory and download and unzip openhab (get link from <a href="http://www.openhab.org/downloads.html">Openhab/downloads</a>). Replace x.x.x in the command below with the version number you copied.
+<code>sudo mkdir /opt/openhab &amp;&amp; cd /opt/openhab/ &amp;&amp; sudo wget &quot;get download link&quot; &amp;&amp; sudo unzip distribution-x.x.x-runtime.zip &amp;&amp; sudo rm distribution-x.x.x-runtime.zip</code></p></li>
+
+<li><p>Download and install bindings for openhab. This installs all possible addons available. Replace x.x.x in the command below with the version number you copied.
+<code>cd addons &amp;&amp; sudo wget &quot;downloadlink addons&quot; &amp;&amp; sudo unzip distribution-x.x.x-addons.zip &amp;&amp; sudo rm distribution-x.x.x.-addons.zip</code></p></li>
+
+<li><p>copy the config file and make the startup script executable
+<code>cd .. &amp;&amp; sudo cp configurations/openhab_default.cfg configurations/openhab.cfg &amp;&amp; sudo chmod +x start.sh</code></p></li>
+
+<li><p>Edit the config file and start the server.
+<code>sudo nano openhab.cfg
+sudo ./opt/openhab/start.sh</code></p></li>
+
+<li><p>Make a startup item with screen, so that you can always access the OSGI console.</p></li>
+</ol>
+
+<p><code>sudo nano /etc/init.d/openhab</code></p>
+
+<ol>
+<li>Paste following code in there on line 14 change the user to your openhab user:</li>
+</ol>
+
+<p>`#! /bin/sh
+    ### BEGIN INIT INFO
+    # Provides:   openHAB
+    # Required-Start: $local_fs $remote_fs
+    # Required-Stop:  $local_fs $remote_fs
+    # Should-Start:   $network
+    # Should-Stop:    $network
+    # Default-Start:  2 3 4 5
+    # Default-Stop:   0 1 6
+    # Short-Description:    Start and stop openHAB in screen Session
+    # Description:    This runs openHAB continuously in screen.
+    ### END INIT INFO
+    # Set OH-User
+    OHUSER=openhab
+    # Set OH-Path
+    OHPATH=/opt/openhab</p>
+
+<pre><code>case &quot;$1&quot; in
+
+  start)
+        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
+        if [ &quot;${PID}&quot; != &quot;&quot; ]
+         then
+          echo openHAB-Screen is already open, use: sudo -u openhab screen -r `pidof SCREEN`
+         else
+          echo &quot;Starting openHAB&quot;
+          cd ${OHPATH}
+          sudo -u ${OHUSER} screen -S openHAB -dm  sh ./start.sh
+        fi
+        ;;
+  stop)
+        echo &quot;Stopping openHAB&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;y$(printf \\r)&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
+        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
+        while [ `ps -ef | grep $PID | wc -l` -gt 1 ]
+         do
+          echo -n .
+          sleep 2
+         done
+        echo .
+        ;;
+  restart|force-reload)
+        echo &quot;Restarting openHAB&quot;
+        $0 stop
+        $0 start
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo &quot;Usage: $N {start|stop|restart}&quot; &gt;&amp;2
+        exit 1
+        ;;
+esac
+exit 0`
+</code></pre>
+
+<ol>
+<li><p>Make the script executable and configure to run on boot</p>
+
+<p><code>sudo chmod a+x /etc/init.d/openhab
+sudo update-rc.d openhab defaults</code></p>
+
+<p>Whenever you want to use the OSGI console, just type</p>
+
+<p><code>screen -x</code> and to leave the screen you do <code>ctrl+a d</code></p></li>
+
+<li><p>Normally your server should run now and you should be able to access the demo content through:</p>
+
+<p><code>http://&lt;openHAB server ip&gt;:8080/openhab.app?sitemap=demo</code></p></li>
+</ol>
+
+<p>[4_img_link]: /images/blogposts/openhab-logo.png</p>
+
+			</div>
+		   
+        </div>
+        
+        <div class="post">
           <h2 class="post-title"><a href="http://www.achter.be/20150519_raspberry-pi-scrapbook/">Raspberry Pi scrapbook</a></h2>
           <span class="post-date">May 19, 2015</span>
 		  
@@ -279,56 +414,6 @@ respawn
 <p>The only big problem I had and what for me is kinda of a deal breaker, is that fact that I got loads of interference after a while. Especially when the Xbox was online over the wifi signal, I tried all solutions found on the web, but none really helped, except putting the transmitter at a 45 degrees angle, but that is not very handy when you need somebody to hold the transmitter while you are playing.</p>
 
 <p>So overall, I like the headset a lot, but there are 2 things I didn&rsquo;t like, one is that I couldn&rsquo;t use digital audio on it, which is very annoying because our tv only has a headphones and digital out connection and the headphones is never surround and the second one was the interference I got from other devices.</p>
-
-			</div>
-		   
-        </div>
-        
-        <div class="post">
-          <h2 class="post-title"><a href="http://www.achter.be/20120307_review-sony-nex-5n/">[review] Sony nex-5n</a></h2>
-          <span class="post-date">Mar 7, 2012</span>
-		  
-			<span class="post-tags">
-		  	
-			          #<a href="/tags/nex-5n">nex-5n</a>&nbsp;
-		  	
-			          #<a href="/tags/review">review</a>&nbsp;
-		  	
-			          #<a href="/tags/sony">sony</a>&nbsp;
-		  	
-			          #<a href="/tags/sony-nex-5n">sony nex-5n</a>&nbsp;
-		  	
-			          #<a href="/tags/test">test</a>&nbsp;
-		  	
-		    </span>
-		  
-		  
-			<div class="content">
-				<p><a href="http://www.flickr.com/photos/loneblackrider/6815151696/" title="[Sony nex-5n] Sunrise in the mist by PitsLamp photography, on Flickr"><img src="http://farm8.staticflickr.com/7056/6815151696_ddc8e7af7d.jpg" width="500" height="332" alt="[Sony nex-5n] Sunrise in the mist" /></a></p>
-
-<p>Sony is really good at letting me test their new cameras. A little while ago I had the chance to test the Sony nex-5n, the successor of the nex-5. I had the pleasure of photographing with the nex-5, which I reviewed over <a href="http://www.achter.be/20101003_sony-nx-5-hands-on-review/" title="Sony Nex-5, hands-on Review" rel="me">here</a>. As I said then, I didn&rsquo;t like the menus, the startup time, &#8230;</p>
-
-<p>The 5n is a whole different deal, in fact it&rsquo;s a great camera. Sony really listened to their users, they did a real good job cleaning up the menu-interface. It feels snappy, intuitive and very logical.</p>
-
-<p><a href="http://www.flickr.com/photos/loneblackrider/6815149410/" title="[Sony nex-5n] NOTP by PitsLamp photography, on Flickr"><img src="http://farm8.staticflickr.com/7038/6815149410_1aaa5d034e.jpg" width="500" height="333" alt="[Sony nex-5n] NOTP" /></a></p>
-
-<p>The quality of the photos is great, it can match the quality of my 5d MK II, which is about 1500 euro more expensive. The photo above is a shot of a concert at 3200 iso, with the standard jpg b/w conversion on it. There is almost no noise and the image is pretty sharp.</p>
-
-<p><a href="http://www.flickr.com/photos/loneblackrider/6961267217/" title="[Sony nex-5n] Spa-Francorchamps by PitsLamp photography, on Flickr"><img src="http://farm8.staticflickr.com/7204/6961267217_844a8bc86d.jpg" width="500" height="332" alt="[Sony nex-5n] Spa-Francorchamps" /></a></p>
-
-<p>My other concern about the nex-5 was the that the camera was pretty slow, well the 5n is definitely not slow. It has a fast autofocus, pretty short start up time, but when you can capture a race-car in full focus on a track, I can only say that it&rsquo;s really fast.</p>
-
-<p><a href="http://www.flickr.com/photos/loneblackrider/6815150124/" title="[Sony nex-5n] Me by PitsLamp photography, on Flickr"><img src="http://farm8.staticflickr.com/7208/6815150124_ebb4faab7d.jpg" width="332" height="500" alt="[Sony nex-5n] Me" /></a></p>
-
-<p>But as with every camera, there are a couple of drawbacks, the first being that you don&rsquo;t have a viewfinder, that&rsquo;s pretty annoying when photographing in bright light. Sony kinda solved this problem by adding a swiveling screen, a very sturdy one I have to say.</p>
-
-<p>Then there is the fact that the flash is external, an sich not a real problem, except sony doens&rsquo;t like standard hotshoes. They didn&rsquo;t even include the typical sony hotshoe, so the only way you can use a flash is by using the included small flash, a flash I don&rsquo;t like. It&rsquo;s small, there are almost no way to control it and it feels pretty filmsy.</p>
-
-<p>The most annoying thing, but that&rsquo;s something I have found in all Sony cameras is the way, you can review your photos and videos on it. I can imagine some people find it very good, but I don&rsquo;t want to go through the menu to view everything I have on my card.</p>
-
-<p>Despite the few things I didn&rsquo;t like that much, the nex-5n is a very decent camera. Even so good that my girlfriend and I are actually considering buying one, how&rsquo;s that for a reference. I test a lot of mirrorless cameras and this is the first I really think is up to par with all DSLR&rsquo;s in the same or even a bit higher price range.</p>
-
-<p><em>Thx to my girlfriend <a href="http://www.saravdv.be" title="There are no endings, only new beginnings" rel="contact, friend">Saravdv</a> for taking most of the pictures.</em></p>
 
 			</div>
 		   

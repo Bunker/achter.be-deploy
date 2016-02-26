@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://www.achter.be/</loc>
-    <lastmod>2015-11-12T12:33:04+01:00</lastmod>
+    <lastmod>2016-02-26T22:00:57+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.achter.be/blog/20160226_hugo_git_deploy_automation/</loc>
+    <lastmod>2016-02-26T22:00:57+01:00</lastmod>
   </url>
   
   <url>

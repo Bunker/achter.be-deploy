@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title> Simple Hosting &middot; achter.be </title>
+
+
+<link rel="stylesheet" href="http://www.achter.be/css/slim.css">
+<link rel="stylesheet" href="http://www.achter.be/css/highlight.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet'>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link href="http://www.achter.be/categories/simple-hosting/index.xml" rel="alternate" type="application/rss+xml" title="achter.be" />
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+  <h1 class="site-title"><a href="http://www.achter.be">achter.be</a></h1>
+  <p class="site-tagline">photography, coffee, technology and more</p>
+  <div class="nav">
+    <a class="nav-btn" href="#">
+      <span class="ci ci-burger"></span>
+    </a>
+    <ul class="nav-list">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+       
+	  <li class="spacer">&ac;</li>
+
+      <li><a href="https://github.com/Bunker">Github</a></li> 
+      <li><a href="https://twitter.com/Bunker">Twitter</a></li> 
+    </ul>
+  </div>
+</div>
+    <div class="content">
+      <div class="posts">
+         
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20160226_hugo_git_deploy_automation/">Auto deploy hugo site</a></h2>
+          <span class="post-date">Feb 26, 2016</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/hugo">hugo</a>&nbsp;
+		  	
+			          #<a href="/tags/git">git</a>&nbsp;
+		  	
+			          #<a href="/tags/gandi">gandi</a>&nbsp;
+		  	
+			          #<a href="/tags/simple-hosting">simple hosting</a>&nbsp;
+		  	
+			          #<a href="/tags/bash-scripting">bash scripting</a>&nbsp;
+		  	
+			          #<a href="/tags/github">github</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				
+
+<p>As some of you know, I&rsquo;m running this site through with the [Hugo][1] site generator. Hugo has many advantages, but one big disadvantage is that to update my site it takes a lot of steps:</p>
+
+<ol>
+<li>Write the markdown code</li>
+<li>Generate the site through hugo</li>
+<li>Commit the site to github</li>
+<li>Connect to Gandi simple hosting through sftp and replace all files because all files are seen as new</li>
+<li>Check permissions after upload</li>
+</ol>
+
+<p>Although only 5 steps this usually takes around 20 minutes to complete.</p>
+
+<p>Earlier this evening I stumbled upon a [blogpost on Gandi cookbook] about auto deploy sites through git on gandi simple hosting. I followed their tutorial and added an extra bash script so that now all it takes me is 1 command and a commit message.</p>
+
+<p>To make sure that the info doesn&rsquo;t get lost and for those having using hugo, unix and gandi simple hosting all combined, these are the steps necessary:</p>
+
+<h2 id="bash-script-for-automating-hugo-generation-and-git-commit-push:e19102061fb5c6b9a2b90417a4cbe015">Bash script for automating hugo generation and git commit + push</h2>
+
+<p>First let&rsquo;s make a bash script to automate the hugo build and the git commit and push.</p>
+
+<p>We are using the ability of hugo to have a deploy directory specified, this is because I have my source code also in a git repository and I want my dev code separate from my live code.</p>
+
+<p>create a file in your home dir on your local system. And paste the following code, change the file paths off course.</p>
+
+<pre><code>#!/bin/bash
+cd FULL_PATH_TO_HUGO_DIRECTORY &amp;&amp; \
+rm -rf &amp;&amp; \
+hugo -d &quot;PATH_TO_DEPLOY_DIRECTORY&quot; &amp;&amp; \
+cd PATH_TO_DEPLOY_DIRECTORY &amp;&amp; \
+read -p &quot;Commit description: &quot; desc
+git add . &amp;&amp; \
+git add -u &amp;&amp; \
+git commit -m &quot;$desc&quot; &amp;&amp; \
+git push
+</code></pre>
+
+<p>Now make a dir ~/bin if it doesn&rsquo;t already exists and copy the script to that directory.</p>
+
+<p>After a reboot or after manually adding the ~/bin path to your ~/.profile you should be able to run the script from everywhere on your system as yourself, however not as root, sudo or another user.</p>
+
+<h2 id="auto-deploy-github-to-simple-hosting:e19102061fb5c6b9a2b90417a4cbe015">Auto deploy github to simple hosting</h2>
+
+<ol>
+<li>Create a simple hosting instance, I had already one PHP/MYSQL version</li>
+<li>Go to the admin panel and activate ssh access in your simple hosting</li>
+<li>Connect to your ssh and navigate to the htdocs of the vhost you want to auto deploy</li>
+</ol>
+
+<p><code>cd /srv/data/web/vhosts/[replace with your vhost]/htdocs</code>
+4. Remove all existing files, make sure you have a backup if the instance is not new</p>
+
+<p><code>rm -rf *</code>
+5. Clone your github repository use the dot at the end of the line, to make sure the repository gets cloned without making a subdirectory</p>
+
+<p><code>git clone https://github.com/[username]/[repositoryname].git .</code>
+6. Check that the files are there
+<code>ls -la</code>
+7. Make a php file with the following content, I named it pull.php</p>
+
+<p><code>nano pull.php</code>
+paste the following code in there</p>
+
+<p><code>&lt;?php
+`git pull`;                         // This will execute the `git pull` command on your instance
+header(&quot;Cache-Control: max-age=1&quot;); // Lower the cache while we're here so the changes take effect faster
+echo &quot;hello!&quot;;                      // So you can confirm the file is in the right place by browsing to the URL
+?&gt;</code>
+8. Make the php file executable</p>
+
+<p><code>chmod +x pull.php</code>
+9. Check if the file works by browsing to its URL, [domain]/pull.php
+10. Go to the settings of your github repository and select webhooks and services
+11. Create a new webhook, where you paste the url of the pull.php, leave all other settings at default
+12. Do an update to check if it works</p>
+
+<p><em>DISCLAIMER</em>: For me it all works very well, but don&rsquo;t change any of the files on the simple hosting without using git or you will have to restart the procedure.</p>
+
+			</div>
+		   
+        </div>
+        
+      </div>
+      <div class="pagination">
+   
+</div>
+    </div>
+    <div class="footer">
+  <p>Powered by <a href="http://gohugo.io">Hugo</a>. This theme—Slim—is open sourced on <a href="https://github.com/zhe/hugo-theme-slim">Github</a>.</p>
+</div>
+
+  </div>
+  <script src="http://www.achter.bejs/slim.js"></script>
+  <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2550570-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+</body>
+
+</html>

@@ -45,6 +45,111 @@
       <div class="posts">
          
         <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20160226_hugo_git_deploy_automation/">Auto deploy hugo site</a></h2>
+          <span class="post-date">Feb 26, 2016</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/hugo">hugo</a>&nbsp;
+		  	
+			          #<a href="/tags/git">git</a>&nbsp;
+		  	
+			          #<a href="/tags/gandi">gandi</a>&nbsp;
+		  	
+			          #<a href="/tags/simple-hosting">simple hosting</a>&nbsp;
+		  	
+			          #<a href="/tags/bash-scripting">bash scripting</a>&nbsp;
+		  	
+			          #<a href="/tags/github">github</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				
+
+<p>As some of you know, I&rsquo;m running this site through with the [Hugo][1] site generator. Hugo has many advantages, but one big disadvantage is that to update my site it takes a lot of steps:</p>
+
+<ol>
+<li>Write the markdown code</li>
+<li>Generate the site through hugo</li>
+<li>Commit the site to github</li>
+<li>Connect to Gandi simple hosting through sftp and replace all files because all files are seen as new</li>
+<li>Check permissions after upload</li>
+</ol>
+
+<p>Although only 5 steps this usually takes around 20 minutes to complete.</p>
+
+<p>Earlier this evening I stumbled upon a [blogpost on Gandi cookbook] about auto deploy sites through git on gandi simple hosting. I followed their tutorial and added an extra bash script so that now all it takes me is 1 command and a commit message.</p>
+
+<p>To make sure that the info doesn&rsquo;t get lost and for those having using hugo, unix and gandi simple hosting all combined, these are the steps necessary:</p>
+
+<h2 id="bash-script-for-automating-hugo-generation-and-git-commit-push:e19102061fb5c6b9a2b90417a4cbe015">Bash script for automating hugo generation and git commit + push</h2>
+
+<p>First let&rsquo;s make a bash script to automate the hugo build and the git commit and push.</p>
+
+<p>We are using the ability of hugo to have a deploy directory specified, this is because I have my source code also in a git repository and I want my dev code separate from my live code.</p>
+
+<p>create a file in your home dir on your local system. And paste the following code, change the file paths off course.</p>
+
+<pre><code>#!/bin/bash
+cd FULL_PATH_TO_HUGO_DIRECTORY &amp;&amp; \
+rm -rf &amp;&amp; \
+hugo -d &quot;PATH_TO_DEPLOY_DIRECTORY&quot; &amp;&amp; \
+cd PATH_TO_DEPLOY_DIRECTORY &amp;&amp; \
+read -p &quot;Commit description: &quot; desc
+git add . &amp;&amp; \
+git add -u &amp;&amp; \
+git commit -m &quot;$desc&quot; &amp;&amp; \
+git push
+</code></pre>
+
+<p>Now make a dir ~/bin if it doesn&rsquo;t already exists and copy the script to that directory.</p>
+
+<p>After a reboot or after manually adding the ~/bin path to your ~/.profile you should be able to run the script from everywhere on your system as yourself, however not as root, sudo or another user.</p>
+
+<h2 id="auto-deploy-github-to-simple-hosting:e19102061fb5c6b9a2b90417a4cbe015">Auto deploy github to simple hosting</h2>
+
+<ol>
+<li>Create a simple hosting instance, I had already one PHP/MYSQL version</li>
+<li>Go to the admin panel and activate ssh access in your simple hosting</li>
+<li>Connect to your ssh and navigate to the htdocs of the vhost you want to auto deploy</li>
+</ol>
+
+<p><code>cd /srv/data/web/vhosts/[replace with your vhost]/htdocs</code>
+4. Remove all existing files, make sure you have a backup if the instance is not new</p>
+
+<p><code>rm -rf *</code>
+5. Clone your github repository use the dot at the end of the line, to make sure the repository gets cloned without making a subdirectory</p>
+
+<p><code>git clone https://github.com/[username]/[repositoryname].git .</code>
+6. Check that the files are there
+<code>ls -la</code>
+7. Make a php file with the following content, I named it pull.php</p>
+
+<p><code>nano pull.php</code>
+paste the following code in there</p>
+
+<p><code>&lt;?php
+`git pull`;                         // This will execute the `git pull` command on your instance
+header(&quot;Cache-Control: max-age=1&quot;); // Lower the cache while we're here so the changes take effect faster
+echo &quot;hello!&quot;;                      // So you can confirm the file is in the right place by browsing to the URL
+?&gt;</code>
+8. Make the php file executable</p>
+
+<p><code>chmod +x pull.php</code>
+9. Check if the file works by browsing to its URL, [domain]/pull.php
+10. Go to the settings of your github repository and select webhooks and services
+11. Create a new webhook, where you paste the url of the pull.php, leave all other settings at default
+12. Do an update to check if it works</p>
+
+<p><em>DISCLAIMER</em>: For me it all works very well, but don&rsquo;t change any of the files on the simple hosting without using git or you will have to restart the procedure.</p>
+
+			</div>
+		   
+        </div>
+        
+        <div class="post">
           <h2 class="post-title"><a href="http://www.achter.be/blog/20151112_usefull_aliases/">Unix/OS X aliases I use frequently</a></h2>
           <span class="post-date">Nov 12, 2015</span>
 		  
@@ -320,141 +425,6 @@ git commit -m &quot;initial import&quot;
 git add .
 git commit -m &quot;fixed untracked files&quot;
 </code></pre>
-
-			</div>
-		   
-        </div>
-        
-        <div class="post">
-          <h2 class="post-title"><a href="http://www.achter.be/blog/20150610_openhab_raspberry_pi/">Openhab install on Raspberry Pi</a></h2>
-          <span class="post-date">Jun 10, 2015</span>
-		  
-			<span class="post-tags">
-		  	
-			          #<a href="/tags/diy">diy</a>&nbsp;
-		  	
-			          #<a href="/tags/tutorial">tutorial</a>&nbsp;
-		  	
-			          #<a href="/tags/home-automation">home automation</a>&nbsp;
-		  	
-			          #<a href="/tags/raspberry-pi">raspberry pi</a>&nbsp;
-		  	
-			          #<a href="/tags/openhab">openhab</a>&nbsp;
-		  	
-		    </span>
-		  
-		  
-			<div class="content">
-				
-
-<p>![Openhab logo][4_img_link]</p>
-
-<p>This post is my guide for installing and configuring <a href="http://www.openhab.org/">Openhab</a> on the <a href="https://www.raspberrypi.org/">Raspberry Pi</a>.</p>
-
-<h1 id="install-openhab:4ec75b23a0cd9226405c51e993ebc751">Install openhab</h1>
-
-<ol>
-<li><p>Upgrade and update apt-get
-<code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></p></li>
-
-<li><p>do a update of the firmware. These are 2 steps you should always do before installing something new.
-<code>sudo rpi-update</code></p></li>
-
-<li><p>make directory and download and unzip openhab (get link from <a href="http://www.openhab.org/downloads.html">Openhab/downloads</a>). Replace x.x.x in the command below with the version number you copied.
-<code>sudo mkdir /opt/openhab &amp;&amp; cd /opt/openhab/ &amp;&amp; sudo wget &quot;get download link&quot; &amp;&amp; sudo unzip distribution-x.x.x-runtime.zip &amp;&amp; sudo rm distribution-x.x.x-runtime.zip</code></p></li>
-
-<li><p>Download and install bindings for openhab. This installs all possible addons available. Replace x.x.x in the command below with the version number you copied.
-<code>cd addons &amp;&amp; sudo wget &quot;downloadlink addons&quot; &amp;&amp; sudo unzip distribution-x.x.x-addons.zip &amp;&amp; sudo rm distribution-x.x.x.-addons.zip</code></p></li>
-
-<li><p>copy the config file and make the startup script executable
-<code>cd .. &amp;&amp; sudo cp configurations/openhab_default.cfg configurations/openhab.cfg &amp;&amp; sudo chmod +x start.sh</code></p></li>
-
-<li><p>Edit the config file and start the server.
-<code>sudo nano openhab.cfg
-sudo ./opt/openhab/start.sh</code></p></li>
-
-<li><p>Make a startup item with screen, so that you can always access the OSGI console.</p></li>
-</ol>
-
-<p><code>sudo nano /etc/init.d/openhab</code></p>
-
-<ol>
-<li>Paste following code in there on line 14 change the user to your openhab user:</li>
-</ol>
-
-<p>`#! /bin/sh
-    ### BEGIN INIT INFO
-    # Provides:   openHAB
-    # Required-Start: $local_fs $remote_fs
-    # Required-Stop:  $local_fs $remote_fs
-    # Should-Start:   $network
-    # Should-Stop:    $network
-    # Default-Start:  2 3 4 5
-    # Default-Stop:   0 1 6
-    # Short-Description:    Start and stop openHAB in screen Session
-    # Description:    This runs openHAB continuously in screen.
-    ### END INIT INFO
-    # Set OH-User
-    OHUSER=openhab
-    # Set OH-Path
-    OHPATH=/opt/openhab</p>
-
-<pre><code>case &quot;$1&quot; in
-
-  start)
-        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
-        if [ &quot;${PID}&quot; != &quot;&quot; ]
-         then
-          echo openHAB-Screen is already open, use: sudo -u openhab screen -r `pidof SCREEN`
-         else
-          echo &quot;Starting openHAB&quot;
-          cd ${OHPATH}
-          sudo -u ${OHUSER} screen -S openHAB -dm  sh ./start.sh
-        fi
-        ;;
-  stop)
-        echo &quot;Stopping openHAB&quot;
-        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
-        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;y$(printf \\r)&quot;
-        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
-        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
-        while [ `ps -ef | grep $PID | wc -l` -gt 1 ]
-         do
-          echo -n .
-          sleep 2
-         done
-        echo .
-        ;;
-  restart|force-reload)
-        echo &quot;Restarting openHAB&quot;
-        $0 stop
-        $0 start
-        ;;
-  *)
-        N=/etc/init.d/$NAME
-        echo &quot;Usage: $N {start|stop|restart}&quot; &gt;&amp;2
-        exit 1
-        ;;
-esac
-exit 0`
-</code></pre>
-
-<ol>
-<li><p>Make the script executable and configure to run on boot</p>
-
-<p><code>sudo chmod a+x /etc/init.d/openhab
-sudo update-rc.d openhab defaults</code></p>
-
-<p>Whenever you want to use the OSGI console, just type</p>
-
-<p><code>screen -x</code> and to leave the screen you do <code>ctrl+a d</code></p></li>
-
-<li><p>Normally your server should run now and you should be able to access the demo content through:</p>
-
-<p><code>http://&lt;openHAB server ip&gt;:8080/openhab.app?sitemap=demo</code></p></li>
-</ol>
-
-<p>[4_img_link]: /images/blogposts/openhab-logo.png</p>
 
 			</div>
 		   
