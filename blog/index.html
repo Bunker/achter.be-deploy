@@ -116,19 +116,30 @@ git push
 <li>Connect to your ssh and navigate to the htdocs of the vhost you want to auto deploy</li>
 </ol>
 
-<p><code>cd /srv/data/web/vhosts/[replace with your vhost]/htdocs</code>
-4. Remove all existing files, make sure you have a backup if the instance is not new</p>
+<p><code>cd /srv/data/web/vhosts/[replace with your vhost]/htdocs</code></p>
 
-<p><code>rm -rf *</code>
-5. Clone your github repository use the dot at the end of the line, to make sure the repository gets cloned without making a subdirectory</p>
+<ol>
+<li>Remove all existing files, make sure you have a backup if the instance is not new</li>
+</ol>
 
-<p><code>git clone https://github.com/[username]/[repositoryname].git .</code>
-6. Check that the files are there
-<code>ls -la</code>
-7. Make a php file with the following content, I named it pull.php</p>
+<p><code>rm -rf *</code></p>
 
-<p><code>nano pull.php</code>
-paste the following code in there</p>
+<ol>
+<li>Clone your github repository use the dot at the end of the line, to make sure the repository gets cloned without making a subdirectory</li>
+</ol>
+
+<p><code>git clone https://github.com/[username]/[repositoryname].git .</code></p>
+
+<ol>
+<li><p>Check that the files are there
+<code>ls -la</code></p></li>
+
+<li><p>Make a php file with the following content, I named it pull.php</p></li>
+</ol>
+
+<p><code>nano pull.php</code></p>
+
+<p>paste the following code in there</p>
 
 <p><code>&lt;?php
 `git pull`;                         // This will execute the `git pull` command on your instance
@@ -137,11 +148,14 @@ echo &quot;hello!&quot;;                      // So you can confirm the file is 
 ?&gt;</code>
 8. Make the php file executable</p>
 
-<p><code>chmod +x pull.php</code>
-9. Check if the file works by browsing to its URL, [domain]/pull.php
-10. Go to the settings of your github repository and select webhooks and services
-11. Create a new webhook, where you paste the url of the pull.php, leave all other settings at default
-12. Do an update to check if it works</p>
+<p><code>chmod +x pull.php</code></p>
+
+<ol>
+<li>Check if the file works by browsing to its URL, [domain]/pull.php</li>
+<li>Go to the settings of your github repository and select webhooks and services</li>
+<li>Create a new webhook, where you paste the url of the pull.php, leave all other settings at default</li>
+<li>Do an update to check if it works</li>
+</ol>
 
 <p><em>DISCLAIMER</em>: For me it all works very well, but don&rsquo;t change any of the files on the simple hosting without using git or you will have to restart the procedure.</p>
 

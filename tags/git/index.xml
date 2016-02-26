@@ -65,19 +65,30 @@ git push
 &lt;li&gt;Connect to your ssh and navigate to the htdocs of the vhost you want to auto deploy&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;code&gt;cd /srv/data/web/vhosts/[replace with your vhost]/htdocs&lt;/code&gt;
-4. Remove all existing files, make sure you have a backup if the instance is not new&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd /srv/data/web/vhosts/[replace with your vhost]/htdocs&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;rm -rf *&lt;/code&gt;
-5. Clone your github repository use the dot at the end of the line, to make sure the repository gets cloned without making a subdirectory&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Remove all existing files, make sure you have a backup if the instance is not new&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&lt;code&gt;git clone https://github.com/[username]/[repositoryname].git .&lt;/code&gt;
-6. Check that the files are there
-&lt;code&gt;ls -la&lt;/code&gt;
-7. Make a php file with the following content, I named it pull.php&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rm -rf *&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;nano pull.php&lt;/code&gt;
-paste the following code in there&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone your github repository use the dot at the end of the line, to make sure the repository gets cloned without making a subdirectory&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;git clone https://github.com/[username]/[repositoryname].git .&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Check that the files are there
+&lt;code&gt;ls -la&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make a php file with the following content, I named it pull.php&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;nano pull.php&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;paste the following code in there&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;&amp;lt;?php
 `git pull`;                         // This will execute the `git pull` command on your instance
@@ -86,11 +97,14 @@ echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the 
 ?&amp;gt;&lt;/code&gt;
 8. Make the php file executable&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;chmod +x pull.php&lt;/code&gt;
-9. Check if the file works by browsing to its URL, [domain]/pull.php
-10. Go to the settings of your github repository and select webhooks and services
-11. Create a new webhook, where you paste the url of the pull.php, leave all other settings at default
-12. Do an update to check if it works&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;chmod +x pull.php&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Check if the file works by browsing to its URL, [domain]/pull.php&lt;/li&gt;
+&lt;li&gt;Go to the settings of your github repository and select webhooks and services&lt;/li&gt;
+&lt;li&gt;Create a new webhook, where you paste the url of the pull.php, leave all other settings at default&lt;/li&gt;
+&lt;li&gt;Do an update to check if it works&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;em&gt;DISCLAIMER&lt;/em&gt;: For me it all works very well, but don&amp;rsquo;t change any of the files on the simple hosting without using git or you will have to restart the procedure.&lt;/p&gt;
 
