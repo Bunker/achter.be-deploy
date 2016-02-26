@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title> Openhab install on Raspberry Pi &middot; achter.be </title>
+
+
+<link rel="stylesheet" href="http://www.achter.be/css/slim.css">
+<link rel="stylesheet" href="http://www.achter.be/css/highlight.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet'>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link href="" rel="alternate" type="application/rss+xml" title="achter.be" />
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+  <h1 class="site-title"><a href="http://www.achter.be">achter.be</a></h1>
+  <p class="site-tagline">photography, coffee, technology and more</p>
+  <div class="nav">
+    <a class="nav-btn" href="#">
+      <span class="ci ci-burger"></span>
+    </a>
+    <ul class="nav-list">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+       
+	  <li class="spacer">&ac;</li>
+
+      <li><a href="https://github.com/Bunker">Github</a></li> 
+      <li><a href="https://twitter.com/Bunker">Twitter</a></li> 
+    </ul>
+  </div>
+</div>
+    <div class="content">
+      <div class="posts">
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20150610_openhab_raspberry_pi/">Openhab install on Raspberry Pi</a></h2>
+          <span class="post-date">Jun 10, 2015 </span>
+          <div class="post-content">
+            
+
+<p>![Openhab logo][4_img_link]</p>
+
+<p>This post is my guide for installing and configuring <a href="http://www.openhab.org/">Openhab</a> on the <a href="https://www.raspberrypi.org/">Raspberry Pi</a>.</p>
+
+<h1 id="install-openhab:4ec75b23a0cd9226405c51e993ebc751">Install openhab</h1>
+
+<ol>
+<li><p>Upgrade and update apt-get
+<code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></p></li>
+
+<li><p>do a update of the firmware. These are 2 steps you should always do before installing something new.
+<code>sudo rpi-update</code></p></li>
+
+<li><p>make directory and download and unzip openhab (get link from <a href="http://www.openhab.org/downloads.html">Openhab/downloads</a>). Replace x.x.x in the command below with the version number you copied.
+<code>sudo mkdir /opt/openhab &amp;&amp; cd /opt/openhab/ &amp;&amp; sudo wget &quot;get download link&quot; &amp;&amp; sudo unzip distribution-x.x.x-runtime.zip &amp;&amp; sudo rm distribution-x.x.x-runtime.zip</code></p></li>
+
+<li><p>Download and install bindings for openhab. This installs all possible addons available. Replace x.x.x in the command below with the version number you copied.
+<code>cd addons &amp;&amp; sudo wget &quot;downloadlink addons&quot; &amp;&amp; sudo unzip distribution-x.x.x-addons.zip &amp;&amp; sudo rm distribution-x.x.x.-addons.zip</code></p></li>
+
+<li><p>copy the config file and make the startup script executable
+<code>cd .. &amp;&amp; sudo cp configurations/openhab_default.cfg configurations/openhab.cfg &amp;&amp; sudo chmod +x start.sh</code></p></li>
+
+<li><p>Edit the config file and start the server.
+<code>sudo nano openhab.cfg
+sudo ./opt/openhab/start.sh</code></p></li>
+
+<li><p>Make a startup item with screen, so that you can always access the OSGI console.</p></li>
+</ol>
+
+<p><code>sudo nano /etc/init.d/openhab</code></p>
+
+<ol>
+<li>Paste following code in there on line 14 change the user to your openhab user:</li>
+</ol>
+
+<p>`#! /bin/sh
+    ### BEGIN INIT INFO
+    # Provides:   openHAB
+    # Required-Start: $local_fs $remote_fs
+    # Required-Stop:  $local_fs $remote_fs
+    # Should-Start:   $network
+    # Should-Stop:    $network
+    # Default-Start:  2 3 4 5
+    # Default-Stop:   0 1 6
+    # Short-Description:    Start and stop openHAB in screen Session
+    # Description:    This runs openHAB continuously in screen.
+    ### END INIT INFO
+    # Set OH-User
+    OHUSER=openhab
+    # Set OH-Path
+    OHPATH=/opt/openhab</p>
+
+<pre><code>case &quot;$1&quot; in
+
+  start)
+        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
+        if [ &quot;${PID}&quot; != &quot;&quot; ]
+         then
+          echo openHAB-Screen is already open, use: sudo -u openhab screen -r `pidof SCREEN`
+         else
+          echo &quot;Starting openHAB&quot;
+          cd ${OHPATH}
+          sudo -u ${OHUSER} screen -S openHAB -dm  sh ./start.sh
+        fi
+        ;;
+  stop)
+        echo &quot;Stopping openHAB&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;y$(printf \\r)&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
+        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
+        while [ `ps -ef | grep $PID | wc -l` -gt 1 ]
+         do
+          echo -n .
+          sleep 2
+         done
+        echo .
+        ;;
+  restart|force-reload)
+        echo &quot;Restarting openHAB&quot;
+        $0 stop
+        $0 start
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo &quot;Usage: $N {start|stop|restart}&quot; &gt;&amp;2
+        exit 1
+        ;;
+esac
+exit 0`
+</code></pre>
+
+<ol>
+<li><p>Make the script executable and configure to run on boot</p>
+
+<p><code>sudo chmod a+x /etc/init.d/openhab
+sudo update-rc.d openhab defaults</code></p>
+
+<p>Whenever you want to use the OSGI console, just type</p>
+
+<p><code>screen -x</code> and to leave the screen you do <code>ctrl+a d</code></p></li>
+
+<li><p>Normally your server should run now and you should be able to access the demo content through:</p>
+
+<p><code>http://&lt;openHAB server ip&gt;:8080/openhab.app?sitemap=demo</code></p></li>
+</ol>
+
+<p>[4_img_link]: /images/blogposts/openhab-logo.png</p>
+
+          </div>
+        </div>
+        <div class="pagination">
+          <a class="btn previous " href="http://www.achter.be/blog/20150611_git_commands/"> Prev</a>  
+          <a class="btn next " href="http://www.achter.be/20150519_raspberry-pi-scrapbook/"> Next</a> 
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+  <p>Powered by <a href="http://gohugo.io">Hugo</a>. This theme—Slim—is open sourced on <a href="https://github.com/zhe/hugo-theme-slim">Github</a>.</p>
+</div>
+
+  </div>
+  <script src="http://www.achter.be/js/slim.js"></script>
+  <script src="http://www.achter.be/js/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2550570-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+
+</html>

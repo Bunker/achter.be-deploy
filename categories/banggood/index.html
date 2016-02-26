@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title> Banggood &middot; achter.be </title>
+
+
+<link rel="stylesheet" href="http://www.achter.be/css/slim.css">
+<link rel="stylesheet" href="http://www.achter.be/css/highlight.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet'>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link href="http://www.achter.be/categories/banggood/index.xml" rel="alternate" type="application/rss+xml" title="achter.be" />
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+  <h1 class="site-title"><a href="http://www.achter.be">achter.be</a></h1>
+  <p class="site-tagline">photography, coffee, technology and more</p>
+  <div class="nav">
+    <a class="nav-btn" href="#">
+      <span class="ci ci-burger"></span>
+    </a>
+    <ul class="nav-list">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+       
+	  <li class="spacer">&ac;</li>
+
+      <li><a href="https://github.com/Bunker">Github</a></li> 
+      <li><a href="https://twitter.com/Bunker">Twitter</a></li> 
+    </ul>
+  </div>
+</div>
+    <div class="content">
+      <div class="posts">
+         
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20150618_Arduino_nano_v3_OS_X_banggood/">Banggood: ATmega328P Arduino Nano V3</a></h2>
+          <span class="post-date">Jun 18, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/ch340g">CH340G</a>&nbsp;
+		  	
+			          #<a href="/tags/atmega328p-arduino-compatible-nano-v3">ATmega328P Arduino Compatible Nano V3</a>&nbsp;
+		  	
+			          #<a href="/tags/os-x-yosmite">OS X Yosmite</a>&nbsp;
+		  	
+			          #<a href="/tags/banggood">Banggood</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				
+
+<p>![ATmega328P Arduino Compatible Nano V3][6_img_link]</p>
+
+<p><em>This worked at the moment of writing, I can&rsquo;t guarantee it will work for future versions of the boards nor OS X</em></p>
+
+<p><strong>For those just wanting the tutorial, <a href="#TLDR">go here</a></strong></p>
+
+<p>I while ago I discovered the chinese website <a href="https://www.banggood.com/?p=IH030017233982015060">Banggood</a>, which has almost everything you want at low prices. Which is very good for my new arduino hobby.</p>
+
+<p>So next to some other components I ordered the <a href="https://www.banggood.com/5Pcs-ATmega328P-Arduino-Compatible-Nano-V3-Improved-Version-With-USB-p-951782.html?p=IH030017233982015060">ATmega328P Arduino Compatible Nano V3 5-pack</a> which means I got 5 Arduino nano clones for 15 euro + free shipping, which is just a steal. I have to be honest I was a bit scared to order them, because of all the mixed reviews on the net. On the other hand the max I would loose is 15 euro.</p>
+
+<p>I knew however before ordering that the USB chipset was probably going to require some extra attention.</p>
+
+<p>So once I received the order yesterday, I immediately tried the solutions offered in the comments on Banggood, but I did not manage to get it working. So I turned to google for the rescue. There were several other solutions, but none worked as it should. However the one that got it all working for me was the tutorial of <a href="http://kiguino.com/2014/12/31/how-to-use-arduino-nano-mini-pro-with-CH340G-on-mac-osx-yosemite.html#continue">kiguino</a>.</p>
+
+<p>I&rsquo;m saying nothing new here, but just because it took me some time on google, I&rsquo;m reblogging it here, for future reference and maybe help somebody else.</p>
+
+<h3 id="a-name-tldr-a-tutorial-for-install-on-mac-os-x-yosmite-latest-test-10-10-3:c7817d31109caaedaa9228da9f8ce4c2"><a name="TLDR"></a>Tutorial for install on Mac OS X Yosmite (latest test 10.10.3)</h3>
+
+<ol>
+<li>Download the driver at <a href="http://www.wch.cn/downloads.php?name=pro&amp;proid=178">the developers website</a> (!! Only the driver from december 2013, works with 10.10)</li>
+<li>Unzip and install by right clicking and selecting open.</li>
+<li>Do <strong>NOT</strong> restart yet</li>
+<li>Open terminal and paste <code>sudo nvram boot-args=&quot;kext-dev-mode=1&quot;</code></li>
+<li>Reboot</li>
+<li>The driver should be installed, on my arduino&rsquo;s it installed as /dev/cu.usbserialmodem1410 or /dev/cu.usbserialmodem1420 depending on the port it was connected to and the device I was using.</li>
+</ol>
+
+<p>[6_img_link]: /images/blogposts/arduino_nano_compatible.jpg</p>
+
+			</div>
+		   
+        </div>
+        
+      </div>
+      <div class="pagination">
+   
+</div>
+    </div>
+    <div class="footer">
+  <p>Powered by <a href="http://gohugo.io">Hugo</a>. This theme—Slim—is open sourced on <a href="https://github.com/zhe/hugo-theme-slim">Github</a>.</p>
+</div>
+
+  </div>
+  <script src="http://www.achter.bejs/slim.js"></script>
+  <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2550570-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+</body>
+
+</html>

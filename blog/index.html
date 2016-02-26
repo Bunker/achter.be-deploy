@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title> Blogs &middot; achter.be </title>
+
+
+<link rel="stylesheet" href="http://www.achter.be/css/slim.css">
+<link rel="stylesheet" href="http://www.achter.be/css/highlight.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet'>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link href="http://www.achter.be/blog/index.xml" rel="alternate" type="application/rss+xml" title="achter.be" />
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+  <h1 class="site-title"><a href="http://www.achter.be">achter.be</a></h1>
+  <p class="site-tagline">photography, coffee, technology and more</p>
+  <div class="nav">
+    <a class="nav-btn" href="#">
+      <span class="ci ci-burger"></span>
+    </a>
+    <ul class="nav-list">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+       
+	  <li class="spacer">&ac;</li>
+
+      <li><a href="https://github.com/Bunker">Github</a></li> 
+      <li><a href="https://twitter.com/Bunker">Twitter</a></li> 
+    </ul>
+  </div>
+</div>
+    <div class="content">
+      <div class="posts">
+         
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20151112_usefull_aliases/">20151112_usefull_aliases</a></h2>
+          <span class="post-date">Nov 12, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/linux">linux</a>&nbsp;
+		  	
+			          #<a href="/tags/mac-os-x">mac os x</a>&nbsp;
+		  	
+			          #<a href="/tags/alias">alias</a>&nbsp;
+		  	
+			          #<a href="/tags/shortcut">shortcut</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				<p>This is a list of aliases I like to use on either Mac OS X and/or Linux</p>
+
+<ul>
+<li>set ls -all to la
+alias la=&lsquo;ls -all&rsquo;</li>
+<li>Built in Raspberry pi temperature check
+alias checktemp=&lsquo;/opt/vc/bin/vcgencmd measure_temp&rsquo;</li>
+<li>Check your external IP through icanhazip.com
+alias ip=&lsquo;curl icanhazip.com&rsquo;</li>
+<li>Check your external IP details through icanhazip.com
+alias iplookup=&lsquo;echo $(curl -s ipinfo.io/$(curl -s icanhazip.com))&rsquo;</li>
+</ul>
+
+			</div>
+		   
+        </div>
+        
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20151111_Arch_linux_boot_usb/">Boot Arch Linux from USB on Raspberry Pi 2</a></h2>
+          <span class="post-date">Nov 12, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/raspberry-pi">raspberry pi</a>&nbsp;
+		  	
+			          #<a href="/tags/backup">backup</a>&nbsp;
+		  	
+			          #<a href="/tags/arch-linux">arch linux</a>&nbsp;
+		  	
+			          #<a href="/tags/rsync">rsync</a>&nbsp;
+		  	
+			          #<a href="/tags/linux">linux</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				<p>At the moment I&rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&rsquo;m using [this guide][1] as a basis. It&rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.</p>
+
+<p>In the guide above we are going to follow the extended procedure. Because that way we are sure that every time we boot we have the correct stick.</p>
+
+<p>To make sure our stick is recognised by Arch we run lsblk</p>
+
+<p>you should see something similar like this:</p>
+
+<pre><code>   NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+   sda           8:0    1  7.6G  0 disk 
+   `-sda1        8:1    1  7.6G  0 part 
+   mmcblk0     179:0    0  3.7G  0 disk 
+   |-mmcblk0p1 179:1    0  100M  0 part 
+   `-mmcblk0p2 179:2    0  3.6G  0 part /
+</code></pre>
+
+<p>The drive we want in my case the sda drive. Make note we are going to need that drive name.</p>
+
+<p>Let us first install gdisk</p>
+
+<pre><code>sudo pacman -S gdisk
+</code></pre>
+
+<p>once that finishes, we are going to use gdisk on the usb stick.</p>
+
+<pre><code>sudo gdisk /dev/sda
+</code></pre>
+
+<p>Enter d to delete partion(s).</p>
+
+<p>Enter n to create a new primary partition (number 1) and use the full capacity by hitting return a few times until done
+<em>note</em>: if you want more partitions use +xxxM to create a different size and repeat n till there is no space left or you have your number of partitions</p>
+
+<p>Now write the new information to the stick by entering &ldquo;w&rdquo;</p>
+
+<p>You should get something like this output</p>
+
+<pre><code>  Command (? for help): d
+  Using 1
+  
+  Command (? for help): n
+  Partition number (1-128, default 1): 
+  First sector (34-15826910, default = 40) or {+-}size{KMGTP}: 
+  Last sector (40-15826910, default = 15826910) or {+-}size{KMGTP}: 
+  Current type is 'Linux filesystem'
+  Hex code or GUID (L to show codes, Enter = 8300): 
+  Changed type of partition to 'Linux filesystem'
+  
+  Command (? for help): w
+  
+  Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+  PARTITIONS!!
+  
+  Do you want to proceed? (Y/N): y
+  OK; writing new GUID partition table (GPT) to /dev/sda.
+  The operation has completed successfully.
+</code></pre>
+
+<p>Now repeat the gdisk command and use i</p>
+
+<pre><code>sudo gdisk /dev/sda
+</code></pre>
+
+<p>you&rsquo;ll get an output like:</p>
+
+<pre><code>  Using 1
+  Partition GUID code: 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem)
+  Partition unique GUID: 0ED53DE0-0BD6-4F15-AC97-A4D0494CEF18
+  First sector: 40 (at 20.0 KiB)
+  Last sector: 15826910 (at 7.5 GiB)
+  Partition size: 15826871 sectors (7.5 GiB)
+  Attribute flags: 0000000000000000
+  Partition name: 'Linux filesystem'
+</code></pre>
+
+<p>The Partition unique GUID is the one we need, in the next step:</p>
+
+<pre><code>sudo cp /boot/cmdline.txt /boot/cmdline.txt.old
+</code></pre>
+
+<p>let&rsquo;s copy the original cmdline.txt file and edit it:</p>
+
+<pre><code>sudo nano /boot/cmdline.txt
+</code></pre>
+
+<p>replace the root=/mnt/&hellip; with root=PARTUUID=youruniqueidentifier</p>
+
+<pre><code>  root=PARTUUID=0ED53DE0-0BD6-4F15-AC97-A4D0494CEF18 rw rootwait console=ttyAMA0,115200 console=tty1 selinux=0 plymouth.enable=0 smsc95xx.turbo_mode=N dwc_otg.lpm_enable=0 kgdboc=ttyAMA0,115200 elevator=noop
+</code></pre>
+
+<p>We now continue with formatting, mounting, installing rsync (which we use later on again as backup system) and the mirroring</p>
+
+<pre><code>   sudo mke2fs -t ext4 -L rootfs /dev/sda1
+   sudo mount /dev/sda1 /mnt
+   sudo pacman -S rsync
+   sudo rsync -axv / /mnt
+</code></pre>
+
+<p>Now we need to get a unique identifier for the fstab drive information:</p>
+
+<pre><code>sudo tune2fs -l /dev/sda1
+</code></pre>
+
+<p>You get a lot of info, but the most important part is the Filesystem UUID</p>
+
+<pre><code>  Filesystem volume name:   rootfs
+  Last mounted on:          /mnt
+  Filesystem UUID:          b8389d09-e7a6-4358-9501-9a309938d30d
+  Filesystem magic number:  0xEF53
+  Filesystem revision #:    1 (dynamic)
+</code></pre>
+
+<p>Next we can enter the information into the filesystem table, /etc/fstab (on the stick, not the SD card). Add the following line:</p>
+
+<pre><code>   /dev/disk/by-uuid/b8389d09-e7a6-4358-9501-9a309938d30d    /   ext4    defaults,noatime  0       1
+</code></pre>
+
+<p>That should be it, try to reboot now, if it boots, type lsblk if you see a / under MOUNTPOINT next to your usb drive, it means you are running from the usb.</p>
+
+<pre><code>   NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+   sda           8:0    1  7.6G  0 disk 
+   `-sda1        8:1    1  7.6G  0 part /
+   mmcblk0     179:0    0  3.7G  0 disk 
+   |-mmcblk0p1 179:1    0  100M  0 part 
+   `-mmcblk0p2 179:2    0  3.6G  0 part
+</code></pre>
+
+<p>[1]: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=44177">https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=44177</a></p>
+
+			</div>
+		   
+        </div>
+        
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20150618_Arduino_nano_v3_OS_X_banggood/">Banggood: ATmega328P Arduino Nano V3</a></h2>
+          <span class="post-date">Jun 18, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/ch340g">CH340G</a>&nbsp;
+		  	
+			          #<a href="/tags/atmega328p-arduino-compatible-nano-v3">ATmega328P Arduino Compatible Nano V3</a>&nbsp;
+		  	
+			          #<a href="/tags/os-x-yosmite">OS X Yosmite</a>&nbsp;
+		  	
+			          #<a href="/tags/banggood">Banggood</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				
+
+<p>![ATmega328P Arduino Compatible Nano V3][6_img_link]</p>
+
+<p><em>This worked at the moment of writing, I can&rsquo;t guarantee it will work for future versions of the boards nor OS X</em></p>
+
+<p><strong>For those just wanting the tutorial, <a href="#TLDR">go here</a></strong></p>
+
+<p>I while ago I discovered the chinese website <a href="https://www.banggood.com/?p=IH030017233982015060">Banggood</a>, which has almost everything you want at low prices. Which is very good for my new arduino hobby.</p>
+
+<p>So next to some other components I ordered the <a href="https://www.banggood.com/5Pcs-ATmega328P-Arduino-Compatible-Nano-V3-Improved-Version-With-USB-p-951782.html?p=IH030017233982015060">ATmega328P Arduino Compatible Nano V3 5-pack</a> which means I got 5 Arduino nano clones for 15 euro + free shipping, which is just a steal. I have to be honest I was a bit scared to order them, because of all the mixed reviews on the net. On the other hand the max I would loose is 15 euro.</p>
+
+<p>I knew however before ordering that the USB chipset was probably going to require some extra attention.</p>
+
+<p>So once I received the order yesterday, I immediately tried the solutions offered in the comments on Banggood, but I did not manage to get it working. So I turned to google for the rescue. There were several other solutions, but none worked as it should. However the one that got it all working for me was the tutorial of <a href="http://kiguino.com/2014/12/31/how-to-use-arduino-nano-mini-pro-with-CH340G-on-mac-osx-yosemite.html#continue">kiguino</a>.</p>
+
+<p>I&rsquo;m saying nothing new here, but just because it took me some time on google, I&rsquo;m reblogging it here, for future reference and maybe help somebody else.</p>
+
+<h3 id="a-name-tldr-a-tutorial-for-install-on-mac-os-x-yosmite-latest-test-10-10-3:c7817d31109caaedaa9228da9f8ce4c2"><a name="TLDR"></a>Tutorial for install on Mac OS X Yosmite (latest test 10.10.3)</h3>
+
+<ol>
+<li>Download the driver at <a href="http://www.wch.cn/downloads.php?name=pro&amp;proid=178">the developers website</a> (!! Only the driver from december 2013, works with 10.10)</li>
+<li>Unzip and install by right clicking and selecting open.</li>
+<li>Do <strong>NOT</strong> restart yet</li>
+<li>Open terminal and paste <code>sudo nvram boot-args=&quot;kext-dev-mode=1&quot;</code></li>
+<li>Reboot</li>
+<li>The driver should be installed, on my arduino&rsquo;s it installed as /dev/cu.usbserialmodem1410 or /dev/cu.usbserialmodem1420 depending on the port it was connected to and the device I was using.</li>
+</ol>
+
+<p>[6_img_link]: /images/blogposts/arduino_nano_compatible.jpg</p>
+
+			</div>
+		   
+        </div>
+        
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20150611_git_commands/">Terminal: Git commands cheat sheet</a></h2>
+          <span class="post-date">Jun 11, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/git">git</a>&nbsp;
+		  	
+			          #<a href="/tags/cheat-sheet">cheat sheet</a>&nbsp;
+		  	
+			          #<a href="/tags/commands">commands</a>&nbsp;
+		  	
+			          #<a href="/tags/terminal">terminal</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				<p>To start a repository from the command line:</p>
+
+<pre><code>git init
+git add .
+git commit -m &quot;initial import&quot;
+</code></pre>
+
+<p>When files are added to .gitignore and are not removed, use following commands and commit.</p>
+
+<pre><code>git rm -r --cached .
+git add .
+git commit -m &quot;fixed untracked files&quot;
+</code></pre>
+
+			</div>
+		   
+        </div>
+        
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20150610_openhab_raspberry_pi/">Openhab install on Raspberry Pi</a></h2>
+          <span class="post-date">Jun 10, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/diy">diy</a>&nbsp;
+		  	
+			          #<a href="/tags/tutorial">tutorial</a>&nbsp;
+		  	
+			          #<a href="/tags/home-automation">home automation</a>&nbsp;
+		  	
+			          #<a href="/tags/raspberry-pi">raspberry pi</a>&nbsp;
+		  	
+			          #<a href="/tags/openhab">openhab</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				
+
+<p>![Openhab logo][4_img_link]</p>
+
+<p>This post is my guide for installing and configuring <a href="http://www.openhab.org/">Openhab</a> on the <a href="https://www.raspberrypi.org/">Raspberry Pi</a>.</p>
+
+<h1 id="install-openhab:4ec75b23a0cd9226405c51e993ebc751">Install openhab</h1>
+
+<ol>
+<li><p>Upgrade and update apt-get
+<code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></p></li>
+
+<li><p>do a update of the firmware. These are 2 steps you should always do before installing something new.
+<code>sudo rpi-update</code></p></li>
+
+<li><p>make directory and download and unzip openhab (get link from <a href="http://www.openhab.org/downloads.html">Openhab/downloads</a>). Replace x.x.x in the command below with the version number you copied.
+<code>sudo mkdir /opt/openhab &amp;&amp; cd /opt/openhab/ &amp;&amp; sudo wget &quot;get download link&quot; &amp;&amp; sudo unzip distribution-x.x.x-runtime.zip &amp;&amp; sudo rm distribution-x.x.x-runtime.zip</code></p></li>
+
+<li><p>Download and install bindings for openhab. This installs all possible addons available. Replace x.x.x in the command below with the version number you copied.
+<code>cd addons &amp;&amp; sudo wget &quot;downloadlink addons&quot; &amp;&amp; sudo unzip distribution-x.x.x-addons.zip &amp;&amp; sudo rm distribution-x.x.x.-addons.zip</code></p></li>
+
+<li><p>copy the config file and make the startup script executable
+<code>cd .. &amp;&amp; sudo cp configurations/openhab_default.cfg configurations/openhab.cfg &amp;&amp; sudo chmod +x start.sh</code></p></li>
+
+<li><p>Edit the config file and start the server.
+<code>sudo nano openhab.cfg
+sudo ./opt/openhab/start.sh</code></p></li>
+
+<li><p>Make a startup item with screen, so that you can always access the OSGI console.</p></li>
+</ol>
+
+<p><code>sudo nano /etc/init.d/openhab</code></p>
+
+<ol>
+<li>Paste following code in there on line 14 change the user to your openhab user:</li>
+</ol>
+
+<p>`#! /bin/sh
+    ### BEGIN INIT INFO
+    # Provides:   openHAB
+    # Required-Start: $local_fs $remote_fs
+    # Required-Stop:  $local_fs $remote_fs
+    # Should-Start:   $network
+    # Should-Stop:    $network
+    # Default-Start:  2 3 4 5
+    # Default-Stop:   0 1 6
+    # Short-Description:    Start and stop openHAB in screen Session
+    # Description:    This runs openHAB continuously in screen.
+    ### END INIT INFO
+    # Set OH-User
+    OHUSER=openhab
+    # Set OH-Path
+    OHPATH=/opt/openhab</p>
+
+<pre><code>case &quot;$1&quot; in
+
+  start)
+        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
+        if [ &quot;${PID}&quot; != &quot;&quot; ]
+         then
+          echo openHAB-Screen is already open, use: sudo -u openhab screen -r `pidof SCREEN`
+         else
+          echo &quot;Starting openHAB&quot;
+          cd ${OHPATH}
+          sudo -u ${OHUSER} screen -S openHAB -dm  sh ./start.sh
+        fi
+        ;;
+  stop)
+        echo &quot;Stopping openHAB&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;y$(printf \\r)&quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &quot;exit$(printf \\r)&quot;
+        PID=`ps -ef | grep openHAB | grep -v grep | awk '{print $2}'`
+        while [ `ps -ef | grep $PID | wc -l` -gt 1 ]
+         do
+          echo -n .
+          sleep 2
+         done
+        echo .
+        ;;
+  restart|force-reload)
+        echo &quot;Restarting openHAB&quot;
+        $0 stop
+        $0 start
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo &quot;Usage: $N {start|stop|restart}&quot; &gt;&amp;2
+        exit 1
+        ;;
+esac
+exit 0`
+</code></pre>
+
+<ol>
+<li><p>Make the script executable and configure to run on boot</p>
+
+<p><code>sudo chmod a+x /etc/init.d/openhab
+sudo update-rc.d openhab defaults</code></p>
+
+<p>Whenever you want to use the OSGI console, just type</p>
+
+<p><code>screen -x</code> and to leave the screen you do <code>ctrl+a d</code></p></li>
+
+<li><p>Normally your server should run now and you should be able to access the demo content through:</p>
+
+<p><code>http://&lt;openHAB server ip&gt;:8080/openhab.app?sitemap=demo</code></p></li>
+</ol>
+
+<p>[4_img_link]: /images/blogposts/openhab-logo.png</p>
+
+			</div>
+		   
+        </div>
+        
+      </div>
+      <div class="pagination">
+   
+  <a class="btn next" href="/blog/page/2/">Older</a> 
+</div>
+    </div>
+    <div class="footer">
+  <p>Powered by <a href="http://gohugo.io">Hugo</a>. This theme—Slim—is open sourced on <a href="https://github.com/zhe/hugo-theme-slim">Github</a>.</p>
+</div>
+
+  </div>
+  <script src="http://www.achter.bejs/slim.js"></script>
+  <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2550570-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title> Rsync &middot; achter.be </title>
+
+
+<link rel="stylesheet" href="http://www.achter.be/css/slim.css">
+<link rel="stylesheet" href="http://www.achter.be/css/highlight.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet'>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link href="http://www.achter.be/categories/rsync/index.xml" rel="alternate" type="application/rss+xml" title="achter.be" />
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+  <h1 class="site-title"><a href="http://www.achter.be">achter.be</a></h1>
+  <p class="site-tagline">photography, coffee, technology and more</p>
+  <div class="nav">
+    <a class="nav-btn" href="#">
+      <span class="ci ci-burger"></span>
+    </a>
+    <ul class="nav-list">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+       
+	  <li class="spacer">&ac;</li>
+
+      <li><a href="https://github.com/Bunker">Github</a></li> 
+      <li><a href="https://twitter.com/Bunker">Twitter</a></li> 
+    </ul>
+  </div>
+</div>
+    <div class="content">
+      <div class="posts">
+         
+        <div class="post">
+          <h2 class="post-title"><a href="http://www.achter.be/blog/20151111_Arch_linux_boot_usb/">Boot Arch Linux from USB on Raspberry Pi 2</a></h2>
+          <span class="post-date">Nov 12, 2015</span>
+		  
+			<span class="post-tags">
+		  	
+			          #<a href="/tags/raspberry-pi">raspberry pi</a>&nbsp;
+		  	
+			          #<a href="/tags/backup">backup</a>&nbsp;
+		  	
+			          #<a href="/tags/arch-linux">arch linux</a>&nbsp;
+		  	
+			          #<a href="/tags/rsync">rsync</a>&nbsp;
+		  	
+			          #<a href="/tags/linux">linux</a>&nbsp;
+		  	
+		    </span>
+		  
+		  
+			<div class="content">
+				<p>At the moment I&rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&rsquo;m using [this guide][1] as a basis. It&rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.</p>
+
+<p>In the guide above we are going to follow the extended procedure. Because that way we are sure that every time we boot we have the correct stick.</p>
+
+<p>To make sure our stick is recognised by Arch we run lsblk</p>
+
+<p>you should see something similar like this:</p>
+
+<pre><code>   NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+   sda           8:0    1  7.6G  0 disk 
+   `-sda1        8:1    1  7.6G  0 part 
+   mmcblk0     179:0    0  3.7G  0 disk 
+   |-mmcblk0p1 179:1    0  100M  0 part 
+   `-mmcblk0p2 179:2    0  3.6G  0 part /
+</code></pre>
+
+<p>The drive we want in my case the sda drive. Make note we are going to need that drive name.</p>
+
+<p>Let us first install gdisk</p>
+
+<pre><code>sudo pacman -S gdisk
+</code></pre>
+
+<p>once that finishes, we are going to use gdisk on the usb stick.</p>
+
+<pre><code>sudo gdisk /dev/sda
+</code></pre>
+
+<p>Enter d to delete partion(s).</p>
+
+<p>Enter n to create a new primary partition (number 1) and use the full capacity by hitting return a few times until done
+<em>note</em>: if you want more partitions use +xxxM to create a different size and repeat n till there is no space left or you have your number of partitions</p>
+
+<p>Now write the new information to the stick by entering &ldquo;w&rdquo;</p>
+
+<p>You should get something like this output</p>
+
+<pre><code>  Command (? for help): d
+  Using 1
+  
+  Command (? for help): n
+  Partition number (1-128, default 1): 
+  First sector (34-15826910, default = 40) or {+-}size{KMGTP}: 
+  Last sector (40-15826910, default = 15826910) or {+-}size{KMGTP}: 
+  Current type is 'Linux filesystem'
+  Hex code or GUID (L to show codes, Enter = 8300): 
+  Changed type of partition to 'Linux filesystem'
+  
+  Command (? for help): w
+  
+  Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+  PARTITIONS!!
+  
+  Do you want to proceed? (Y/N): y
+  OK; writing new GUID partition table (GPT) to /dev/sda.
+  The operation has completed successfully.
+</code></pre>
+
+<p>Now repeat the gdisk command and use i</p>
+
+<pre><code>sudo gdisk /dev/sda
+</code></pre>
+
+<p>you&rsquo;ll get an output like:</p>
+
+<pre><code>  Using 1
+  Partition GUID code: 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem)
+  Partition unique GUID: 0ED53DE0-0BD6-4F15-AC97-A4D0494CEF18
+  First sector: 40 (at 20.0 KiB)
+  Last sector: 15826910 (at 7.5 GiB)
+  Partition size: 15826871 sectors (7.5 GiB)
+  Attribute flags: 0000000000000000
+  Partition name: 'Linux filesystem'
+</code></pre>
+
+<p>The Partition unique GUID is the one we need, in the next step:</p>
+
+<pre><code>sudo cp /boot/cmdline.txt /boot/cmdline.txt.old
+</code></pre>
+
+<p>let&rsquo;s copy the original cmdline.txt file and edit it:</p>
+
+<pre><code>sudo nano /boot/cmdline.txt
+</code></pre>
+
+<p>replace the root=/mnt/&hellip; with root=PARTUUID=youruniqueidentifier</p>
+
+<pre><code>  root=PARTUUID=0ED53DE0-0BD6-4F15-AC97-A4D0494CEF18 rw rootwait console=ttyAMA0,115200 console=tty1 selinux=0 plymouth.enable=0 smsc95xx.turbo_mode=N dwc_otg.lpm_enable=0 kgdboc=ttyAMA0,115200 elevator=noop
+</code></pre>
+
+<p>We now continue with formatting, mounting, installing rsync (which we use later on again as backup system) and the mirroring</p>
+
+<pre><code>   sudo mke2fs -t ext4 -L rootfs /dev/sda1
+   sudo mount /dev/sda1 /mnt
+   sudo pacman -S rsync
+   sudo rsync -axv / /mnt
+</code></pre>
+
+<p>Now we need to get a unique identifier for the fstab drive information:</p>
+
+<pre><code>sudo tune2fs -l /dev/sda1
+</code></pre>
+
+<p>You get a lot of info, but the most important part is the Filesystem UUID</p>
+
+<pre><code>  Filesystem volume name:   rootfs
+  Last mounted on:          /mnt
+  Filesystem UUID:          b8389d09-e7a6-4358-9501-9a309938d30d
+  Filesystem magic number:  0xEF53
+  Filesystem revision #:    1 (dynamic)
+</code></pre>
+
+<p>Next we can enter the information into the filesystem table, /etc/fstab (on the stick, not the SD card). Add the following line:</p>
+
+<pre><code>   /dev/disk/by-uuid/b8389d09-e7a6-4358-9501-9a309938d30d    /   ext4    defaults,noatime  0       1
+</code></pre>
+
+<p>That should be it, try to reboot now, if it boots, type lsblk if you see a / under MOUNTPOINT next to your usb drive, it means you are running from the usb.</p>
+
+<pre><code>   NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+   sda           8:0    1  7.6G  0 disk 
+   `-sda1        8:1    1  7.6G  0 part /
+   mmcblk0     179:0    0  3.7G  0 disk 
+   |-mmcblk0p1 179:1    0  100M  0 part 
+   `-mmcblk0p2 179:2    0  3.6G  0 part
+</code></pre>
+
+<p>[1]: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=44177">https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=44177</a></p>
+
+			</div>
+		   
+        </div>
+        
+      </div>
+      <div class="pagination">
+   
+</div>
+    </div>
+    <div class="footer">
+  <p>Powered by <a href="http://gohugo.io">Hugo</a>. This theme—Slim—is open sourced on <a href="https://github.com/zhe/hugo-theme-slim">Github</a>.</p>
+</div>
+
+  </div>
+  <script src="http://www.achter.bejs/slim.js"></script>
+  <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2550570-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+</body>
+
+</html>
