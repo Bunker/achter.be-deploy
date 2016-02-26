@@ -91,39 +91,41 @@ git push
 
 <h2 id="auto-deploy-github-to-simple-hosting:e19102061fb5c6b9a2b90417a4cbe015">Auto deploy github to simple hosting</h2>
 
-<ol>
+<ul>
 <li>Create a simple hosting instance, I had already one PHP/MYSQL version</li>
 <li>Go to the admin panel and activate ssh access in your simple hosting</li>
 <li>Connect to your ssh and navigate to the htdocs of the vhost you want to auto deploy</li>
-</ol>
+</ul>
 
 <p><code>cd /srv/data/web/vhosts/[replace with your vhost]/htdocs</code></p>
 
-<ol>
+<ul>
 <li>Remove all existing files, make sure you have a backup if the instance is not new</li>
-</ol>
+</ul>
 
 <p><code>rm -rf *</code></p>
 
-<ol>
+<ul>
 <li>Clone your github repository use the dot at the end of the line, to make sure the repository gets cloned without making a subdirectory</li>
-</ol>
+</ul>
 
 <p><code>git clone https://github.com/[username]/[repositoryname].git .</code></p>
 
-<ol>
+<ul>
 <li>Check that the files are there</li>
-</ol>
+</ul>
 
 <p><code>ls -la</code></p>
 
-<ol>
+<ul>
 <li>Make a php file with the following content, I named it pull.php</li>
-</ol>
+</ul>
 
 <p><code>nano pull.php</code></p>
 
-<p>paste the following code in there</p>
+<ul>
+<li>paste the following code in there</li>
+</ul>
 
 <p><code>&lt;?php
 `git pull`;                         // This will execute the `git pull` command on your instance
@@ -131,18 +133,18 @@ header(&quot;Cache-Control: max-age=1&quot;); // Lower the cache while we're her
 echo &quot;hello!&quot;;                      // So you can confirm the file is in the right place by browsing to the URL
 ?&gt;</code></p>
 
-<ol>
+<ul>
 <li>Make the php file executable</li>
-</ol>
+</ul>
 
 <p><code>chmod +x pull.php</code></p>
 
-<ol>
+<ul>
 <li>Check if the file works by browsing to its URL, [domain]/pull.php</li>
 <li>Go to the settings of your github repository and select webhooks and services</li>
 <li>Create a new webhook, where you paste the url of the pull.php, leave all other settings at default</li>
 <li>Do an update to check if it works</li>
-</ol>
+</ul>
 
 <p><em>DISCLAIMER</em>: For me it all works very well, but don&rsquo;t change any of the files on the simple hosting without using git or you will have to restart the procedure.</p>
 
