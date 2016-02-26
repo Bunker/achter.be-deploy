@@ -26,6 +26,8 @@ alias checktemp=&amp;lsquo;/opt/vc/bin/vcgencmd measure_temp&amp;rsquo;&lt;/li&g
 alias ip=&amp;lsquo;curl icanhazip.com&amp;rsquo;&lt;/li&gt;
 &lt;li&gt;Check your external IP details through icanhazip.com
 alias iplookup=&amp;lsquo;echo $(curl -s ipinfo.io/$(curl -s icanhazip.com))&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;Directly go to my dropbox folder on OS X
+alias dropbox=&amp;lsquo;cd /Volumes/Macintosh\ HD/Dropbox/&amp;rsquo;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
