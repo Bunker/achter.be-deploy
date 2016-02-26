@@ -75,10 +75,17 @@
 
 <pre><code>#!/bin/bash
 cd FULL_PATH_TO_HUGO_DIRECTORY &amp;&amp; \
+echo -e &quot;\033[1mDeleting files\033[0m&quot; &amp;&amp; \
 rm -rf &amp;&amp; \
+echo -e &quot;\033[1mGenerating hugo site\033[0m&quot; &amp;&amp; \
 hugo -d &quot;PATH_TO_DEPLOY_DIRECTORY&quot; &amp;&amp; \
-cd PATH_TO_DEPLOY_DIRECTORY &amp;&amp; \
+echo -e &quot;\033[1mGit commit + push\033[0m&quot; &amp;&amp; \
 read -p &quot;Commit description: &quot; desc
+git add . &amp;&amp; \
+git add -u &amp;&amp; \
+git commit -m &quot;$desc&quot; &amp;&amp; \
+git push &amp;&amp;
+cd PATH_TO_DEPLOY_DIRECTORY &amp;&amp; \
 git add . &amp;&amp; \
 git add -u &amp;&amp; \
 git commit -m &quot;$desc&quot; &amp;&amp; \

@@ -43,10 +43,17 @@
 
 &lt;pre&gt;&lt;code&gt;#!/bin/bash
 cd FULL_PATH_TO_HUGO_DIRECTORY &amp;amp;&amp;amp; \
+echo -e &amp;quot;\033[1mDeleting files\033[0m&amp;quot; &amp;amp;&amp;amp; \
 rm -rf &amp;amp;&amp;amp; \
+echo -e &amp;quot;\033[1mGenerating hugo site\033[0m&amp;quot; &amp;amp;&amp;amp; \
 hugo -d &amp;quot;PATH_TO_DEPLOY_DIRECTORY&amp;quot; &amp;amp;&amp;amp; \
-cd PATH_TO_DEPLOY_DIRECTORY &amp;amp;&amp;amp; \
+echo -e &amp;quot;\033[1mGit commit + push\033[0m&amp;quot; &amp;amp;&amp;amp; \
 read -p &amp;quot;Commit description: &amp;quot; desc
+git add . &amp;amp;&amp;amp; \
+git add -u &amp;amp;&amp;amp; \
+git commit -m &amp;quot;$desc&amp;quot; &amp;amp;&amp;amp; \
+git push &amp;amp;&amp;amp;
+cd PATH_TO_DEPLOY_DIRECTORY &amp;amp;&amp;amp; \
 git add . &amp;amp;&amp;amp; \
 git add -u &amp;amp;&amp;amp; \
 git commit -m &amp;quot;$desc&amp;quot; &amp;amp;&amp;amp; \
