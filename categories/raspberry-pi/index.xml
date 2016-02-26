@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Raspberry Pi on achter.be</title>
+    <link>http://www.achter.be/categories/raspberry-pi/</link>
+    <description>Recent content in Raspberry Pi on achter.be</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Nov 2015 01:53:50 +0100</lastBuildDate>
+    <atom:link href="http://www.achter.be/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Boot Arch Linux from USB on Raspberry Pi 2</title>
+      <link>http://www.achter.be/blog/20151111_Arch_linux_boot_usb/</link>
+      <pubDate>Thu, 12 Nov 2015 01:53:50 +0100</pubDate>
+      
+      <guid>http://www.achter.be/blog/20151111_Arch_linux_boot_usb/</guid>
+      <description>&lt;p&gt;At the moment I&amp;rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&amp;rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&amp;rsquo;m using [this guide][1] as a basis. It&amp;rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.&lt;/p&gt;
+
+&lt;p&gt;In the guide above we are going to follow the extended procedure. Because that way we are sure that every time we boot we have the correct stick.&lt;/p&gt;
+
+&lt;p&gt;To make sure our stick is recognised by Arch we run lsblk&lt;/p&gt;
+
+&lt;p&gt;you should see something similar like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+   sda           8:0    1  7.6G  0 disk 
+   `-sda1        8:1    1  7.6G  0 part 
+   mmcblk0     179:0    0  3.7G  0 disk 
+   |-mmcblk0p1 179:1    0  100M  0 part 
+   `-mmcblk0p2 179:2    0  3.6G  0 part /
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The drive we want in my case the sda drive. Make note we are going to need that drive name.&lt;/p&gt;
+
+&lt;p&gt;Let us first install gdisk&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo pacman -S gdisk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;once that finishes, we are going to use gdisk on the usb stick.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo gdisk /dev/sda
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enter d to delete partion(s).&lt;/p&gt;
+
+&lt;p&gt;Enter n to create a new primary partition (number 1) and use the full capacity by hitting return a few times until done
+&lt;em&gt;note&lt;/em&gt;: if you want more partitions use +xxxM to create a different size and repeat n till there is no space left or you have your number of partitions&lt;/p&gt;
+
+&lt;p&gt;Now write the new information to the stick by entering &amp;ldquo;w&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;You should get something like this output&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  Command (? for help): d
+  Using 1
+  
+  Command (? for help): n
+  Partition number (1-128, default 1): 
+  First sector (34-15826910, default = 40) or {+-}size{KMGTP}: 
+  Last sector (40-15826910, default = 15826910) or {+-}size{KMGTP}: 
+  Current type is &#39;Linux filesystem&#39;
+  Hex code or GUID (L to show codes, Enter = 8300): 
+  Changed type of partition to &#39;Linux filesystem&#39;
+  
+  Command (? for help): w
+  
+  Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+  PARTITIONS!!
+  
+  Do you want to proceed? (Y/N): y
+  OK; writing new GUID partition table (GPT) to /dev/sda.
+  The operation has completed successfully.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now repeat the gdisk command and use i&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo gdisk /dev/sda
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you&amp;rsquo;ll get an output like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  Using 1
+  Partition GUID code: 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem)
+  Partition unique GUID: 0ED53DE0-0BD6-4F15-AC97-A4D0494CEF18
+  First sector: 40 (at 20.0 KiB)
+  Last sector: 15826910 (at 7.5 GiB)
+  Partition size: 15826871 sectors (7.5 GiB)
+  Attribute flags: 0000000000000000
+  Partition name: &#39;Linux filesystem&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Partition unique GUID is the one we need, in the next step:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo cp /boot/cmdline.txt /boot/cmdline.txt.old
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;let&amp;rsquo;s copy the original cmdline.txt file and edit it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo nano /boot/cmdline.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;replace the root=/mnt/&amp;hellip; with root=PARTUUID=youruniqueidentifier&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  root=PARTUUID=0ED53DE0-0BD6-4F15-AC97-A4D0494CEF18 rw rootwait console=ttyAMA0,115200 console=tty1 selinux=0 plymouth.enable=0 smsc95xx.turbo_mode=N dwc_otg.lpm_enable=0 kgdboc=ttyAMA0,115200 elevator=noop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We now continue with formatting, mounting, installing rsync (which we use later on again as backup system) and the mirroring&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   sudo mke2fs -t ext4 -L rootfs /dev/sda1
+   sudo mount /dev/sda1 /mnt
+   sudo pacman -S rsync
+   sudo rsync -axv / /mnt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we need to get a unique identifier for the fstab drive information:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo tune2fs -l /dev/sda1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You get a lot of info, but the most important part is the Filesystem UUID&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  Filesystem volume name:   rootfs
+  Last mounted on:          /mnt
+  Filesystem UUID:          b8389d09-e7a6-4358-9501-9a309938d30d
+  Filesystem magic number:  0xEF53
+  Filesystem revision #:    1 (dynamic)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we can enter the information into the filesystem table, /etc/fstab (on the stick, not the SD card). Add the following line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   /dev/disk/by-uuid/b8389d09-e7a6-4358-9501-9a309938d30d    /   ext4    defaults,noatime  0       1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That should be it, try to reboot now, if it boots, type lsblk if you see a / under MOUNTPOINT next to your usb drive, it means you are running from the usb.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+   sda           8:0    1  7.6G  0 disk 
+   `-sda1        8:1    1  7.6G  0 part /
+   mmcblk0     179:0    0  3.7G  0 disk 
+   |-mmcblk0p1 179:1    0  100M  0 part 
+   `-mmcblk0p2 179:2    0  3.6G  0 part
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&#34;&gt;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Openhab install on Raspberry Pi</title>
+      <link>http://www.achter.be/blog/20150610_openhab_raspberry_pi/</link>
+      <pubDate>Wed, 10 Jun 2015 18:43:54 +0200</pubDate>
+      
+      <guid>http://www.achter.be/blog/20150610_openhab_raspberry_pi/</guid>
+      <description>
+
+&lt;p&gt;![Openhab logo][4_img_link]&lt;/p&gt;
+
+&lt;p&gt;This post is my guide for installing and configuring &lt;a href=&#34;http://www.openhab.org/&#34;&gt;Openhab&lt;/a&gt; on the &lt;a href=&#34;https://www.raspberrypi.org/&#34;&gt;Raspberry Pi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;install-openhab:4ec75b23a0cd9226405c51e993ebc751&#34;&gt;Install openhab&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Upgrade and update apt-get
+&lt;code&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;do a update of the firmware. These are 2 steps you should always do before installing something new.
+&lt;code&gt;sudo rpi-update&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;make directory and download and unzip openhab (get link from &lt;a href=&#34;http://www.openhab.org/downloads.html&#34;&gt;Openhab/downloads&lt;/a&gt;). Replace x.x.x in the command below with the version number you copied.
+&lt;code&gt;sudo mkdir /opt/openhab &amp;amp;&amp;amp; cd /opt/openhab/ &amp;amp;&amp;amp; sudo wget &amp;quot;get download link&amp;quot; &amp;amp;&amp;amp; sudo unzip distribution-x.x.x-runtime.zip &amp;amp;&amp;amp; sudo rm distribution-x.x.x-runtime.zip&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Download and install bindings for openhab. This installs all possible addons available. Replace x.x.x in the command below with the version number you copied.
+&lt;code&gt;cd addons &amp;amp;&amp;amp; sudo wget &amp;quot;downloadlink addons&amp;quot; &amp;amp;&amp;amp; sudo unzip distribution-x.x.x-addons.zip &amp;amp;&amp;amp; sudo rm distribution-x.x.x.-addons.zip&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;copy the config file and make the startup script executable
+&lt;code&gt;cd .. &amp;amp;&amp;amp; sudo cp configurations/openhab_default.cfg configurations/openhab.cfg &amp;amp;&amp;amp; sudo chmod +x start.sh&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit the config file and start the server.
+&lt;code&gt;sudo nano openhab.cfg
+sudo ./opt/openhab/start.sh&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make a startup item with screen, so that you can always access the OSGI console.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;sudo nano /etc/init.d/openhab&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Paste following code in there on line 14 change the user to your openhab user:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;`#! /bin/sh
+    ### BEGIN INIT INFO
+    # Provides:   openHAB
+    # Required-Start: $local_fs $remote_fs
+    # Required-Stop:  $local_fs $remote_fs
+    # Should-Start:   $network
+    # Should-Stop:    $network
+    # Default-Start:  2 3 4 5
+    # Default-Stop:   0 1 6
+    # Short-Description:    Start and stop openHAB in screen Session
+    # Description:    This runs openHAB continuously in screen.
+    ### END INIT INFO
+    # Set OH-User
+    OHUSER=openhab
+    # Set OH-Path
+    OHPATH=/opt/openhab&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;case &amp;quot;$1&amp;quot; in
+
+  start)
+        PID=`ps -ef | grep openHAB | grep -v grep | awk &#39;{print $2}&#39;`
+        if [ &amp;quot;${PID}&amp;quot; != &amp;quot;&amp;quot; ]
+         then
+          echo openHAB-Screen is already open, use: sudo -u openhab screen -r `pidof SCREEN`
+         else
+          echo &amp;quot;Starting openHAB&amp;quot;
+          cd ${OHPATH}
+          sudo -u ${OHUSER} screen -S openHAB -dm  sh ./start.sh
+        fi
+        ;;
+  stop)
+        echo &amp;quot;Stopping openHAB&amp;quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &amp;quot;exit$(printf \\r)&amp;quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &amp;quot;y$(printf \\r)&amp;quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &amp;quot;exit$(printf \\r)&amp;quot;
+        PID=`ps -ef | grep openHAB | grep -v grep | awk &#39;{print $2}&#39;`
+        while [ `ps -ef | grep $PID | wc -l` -gt 1 ]
+         do
+          echo -n .
+          sleep 2
+         done
+        echo .
+        ;;
+  restart|force-reload)
+        echo &amp;quot;Restarting openHAB&amp;quot;
+        $0 stop
+        $0 start
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo &amp;quot;Usage: $N {start|stop|restart}&amp;quot; &amp;gt;&amp;amp;2
+        exit 1
+        ;;
+esac
+exit 0`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Make the script executable and configure to run on boot&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo chmod a+x /etc/init.d/openhab
+sudo update-rc.d openhab defaults&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Whenever you want to use the OSGI console, just type&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;screen -x&lt;/code&gt; and to leave the screen you do &lt;code&gt;ctrl+a d&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Normally your server should run now and you should be able to access the demo content through:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://&amp;lt;openHAB server ip&amp;gt;:8080/openhab.app?sitemap=demo&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[4_img_link]: /images/blogposts/openhab-logo.png&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

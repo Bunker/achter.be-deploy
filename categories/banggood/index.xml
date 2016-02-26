@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Banggood on achter.be</title>
+    <link>http://www.achter.be/categories/banggood/</link>
+    <description>Recent content in Banggood on achter.be</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jun 2015 10:16:25 +0200</lastBuildDate>
+    <atom:link href="http://www.achter.be/categories/banggood/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Banggood: ATmega328P Arduino Nano V3</title>
+      <link>http://www.achter.be/blog/20150618_Arduino_nano_v3_OS_X_banggood/</link>
+      <pubDate>Thu, 18 Jun 2015 10:16:25 +0200</pubDate>
+      
+      <guid>http://www.achter.be/blog/20150618_Arduino_nano_v3_OS_X_banggood/</guid>
+      <description>
+
+&lt;p&gt;![ATmega328P Arduino Compatible Nano V3][6_img_link]&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This worked at the moment of writing, I can&amp;rsquo;t guarantee it will work for future versions of the boards nor OS X&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;For those just wanting the tutorial, &lt;a href=&#34;#TLDR&#34;&gt;go here&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I while ago I discovered the chinese website &lt;a href=&#34;https://www.banggood.com/?p=IH030017233982015060&#34;&gt;Banggood&lt;/a&gt;, which has almost everything you want at low prices. Which is very good for my new arduino hobby.&lt;/p&gt;
+
+&lt;p&gt;So next to some other components I ordered the &lt;a href=&#34;https://www.banggood.com/5Pcs-ATmega328P-Arduino-Compatible-Nano-V3-Improved-Version-With-USB-p-951782.html?p=IH030017233982015060&#34;&gt;ATmega328P Arduino Compatible Nano V3 5-pack&lt;/a&gt; which means I got 5 Arduino nano clones for 15 euro + free shipping, which is just a steal. I have to be honest I was a bit scared to order them, because of all the mixed reviews on the net. On the other hand the max I would loose is 15 euro.&lt;/p&gt;
+
+&lt;p&gt;I knew however before ordering that the USB chipset was probably going to require some extra attention.&lt;/p&gt;
+
+&lt;p&gt;So once I received the order yesterday, I immediately tried the solutions offered in the comments on Banggood, but I did not manage to get it working. So I turned to google for the rescue. There were several other solutions, but none worked as it should. However the one that got it all working for me was the tutorial of &lt;a href=&#34;http://kiguino.com/2014/12/31/how-to-use-arduino-nano-mini-pro-with-CH340G-on-mac-osx-yosemite.html#continue&#34;&gt;kiguino&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m saying nothing new here, but just because it took me some time on google, I&amp;rsquo;m reblogging it here, for future reference and maybe help somebody else.&lt;/p&gt;
+
+&lt;h3 id=&#34;a-name-tldr-a-tutorial-for-install-on-mac-os-x-yosmite-latest-test-10-10-3:c7817d31109caaedaa9228da9f8ce4c2&#34;&gt;&lt;a name=&#34;TLDR&#34;&gt;&lt;/a&gt;Tutorial for install on Mac OS X Yosmite (latest test 10.10.3)&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the driver at &lt;a href=&#34;http://www.wch.cn/downloads.php?name=pro&amp;amp;proid=178&#34;&gt;the developers website&lt;/a&gt; (!! Only the driver from december 2013, works with 10.10)&lt;/li&gt;
+&lt;li&gt;Unzip and install by right clicking and selecting open.&lt;/li&gt;
+&lt;li&gt;Do &lt;strong&gt;NOT&lt;/strong&gt; restart yet&lt;/li&gt;
+&lt;li&gt;Open terminal and paste &lt;code&gt;sudo nvram boot-args=&amp;quot;kext-dev-mode=1&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Reboot&lt;/li&gt;
+&lt;li&gt;The driver should be installed, on my arduino&amp;rsquo;s it installed as /dev/cu.usbserialmodem1410 or /dev/cu.usbserialmodem1420 depending on the port it was connected to and the device I was using.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[6_img_link]: /images/blogposts/arduino_nano_compatible.jpg&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

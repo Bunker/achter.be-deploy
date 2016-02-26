@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home Automation on achter.be</title>
+    <link>http://www.achter.be/categories/home-automation/</link>
+    <description>Recent content in Home Automation on achter.be</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Jun 2015 18:43:54 +0200</lastBuildDate>
+    <atom:link href="http://www.achter.be/categories/home-automation/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Openhab install on Raspberry Pi</title>
+      <link>http://www.achter.be/blog/20150610_openhab_raspberry_pi/</link>
+      <pubDate>Wed, 10 Jun 2015 18:43:54 +0200</pubDate>
+      
+      <guid>http://www.achter.be/blog/20150610_openhab_raspberry_pi/</guid>
+      <description>
+
+&lt;p&gt;![Openhab logo][4_img_link]&lt;/p&gt;
+
+&lt;p&gt;This post is my guide for installing and configuring &lt;a href=&#34;http://www.openhab.org/&#34;&gt;Openhab&lt;/a&gt; on the &lt;a href=&#34;https://www.raspberrypi.org/&#34;&gt;Raspberry Pi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;install-openhab:4ec75b23a0cd9226405c51e993ebc751&#34;&gt;Install openhab&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Upgrade and update apt-get
+&lt;code&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;do a update of the firmware. These are 2 steps you should always do before installing something new.
+&lt;code&gt;sudo rpi-update&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;make directory and download and unzip openhab (get link from &lt;a href=&#34;http://www.openhab.org/downloads.html&#34;&gt;Openhab/downloads&lt;/a&gt;). Replace x.x.x in the command below with the version number you copied.
+&lt;code&gt;sudo mkdir /opt/openhab &amp;amp;&amp;amp; cd /opt/openhab/ &amp;amp;&amp;amp; sudo wget &amp;quot;get download link&amp;quot; &amp;amp;&amp;amp; sudo unzip distribution-x.x.x-runtime.zip &amp;amp;&amp;amp; sudo rm distribution-x.x.x-runtime.zip&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Download and install bindings for openhab. This installs all possible addons available. Replace x.x.x in the command below with the version number you copied.
+&lt;code&gt;cd addons &amp;amp;&amp;amp; sudo wget &amp;quot;downloadlink addons&amp;quot; &amp;amp;&amp;amp; sudo unzip distribution-x.x.x-addons.zip &amp;amp;&amp;amp; sudo rm distribution-x.x.x.-addons.zip&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;copy the config file and make the startup script executable
+&lt;code&gt;cd .. &amp;amp;&amp;amp; sudo cp configurations/openhab_default.cfg configurations/openhab.cfg &amp;amp;&amp;amp; sudo chmod +x start.sh&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit the config file and start the server.
+&lt;code&gt;sudo nano openhab.cfg
+sudo ./opt/openhab/start.sh&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make a startup item with screen, so that you can always access the OSGI console.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;sudo nano /etc/init.d/openhab&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Paste following code in there on line 14 change the user to your openhab user:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;`#! /bin/sh
+    ### BEGIN INIT INFO
+    # Provides:   openHAB
+    # Required-Start: $local_fs $remote_fs
+    # Required-Stop:  $local_fs $remote_fs
+    # Should-Start:   $network
+    # Should-Stop:    $network
+    # Default-Start:  2 3 4 5
+    # Default-Stop:   0 1 6
+    # Short-Description:    Start and stop openHAB in screen Session
+    # Description:    This runs openHAB continuously in screen.
+    ### END INIT INFO
+    # Set OH-User
+    OHUSER=openhab
+    # Set OH-Path
+    OHPATH=/opt/openhab&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;case &amp;quot;$1&amp;quot; in
+
+  start)
+        PID=`ps -ef | grep openHAB | grep -v grep | awk &#39;{print $2}&#39;`
+        if [ &amp;quot;${PID}&amp;quot; != &amp;quot;&amp;quot; ]
+         then
+          echo openHAB-Screen is already open, use: sudo -u openhab screen -r `pidof SCREEN`
+         else
+          echo &amp;quot;Starting openHAB&amp;quot;
+          cd ${OHPATH}
+          sudo -u ${OHUSER} screen -S openHAB -dm  sh ./start.sh
+        fi
+        ;;
+  stop)
+        echo &amp;quot;Stopping openHAB&amp;quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &amp;quot;exit$(printf \\r)&amp;quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &amp;quot;y$(printf \\r)&amp;quot;
+        sudo -u ${OHUSER} screen -S openHAB -p 0 -X stuff &amp;quot;exit$(printf \\r)&amp;quot;
+        PID=`ps -ef | grep openHAB | grep -v grep | awk &#39;{print $2}&#39;`
+        while [ `ps -ef | grep $PID | wc -l` -gt 1 ]
+         do
+          echo -n .
+          sleep 2
+         done
+        echo .
+        ;;
+  restart|force-reload)
+        echo &amp;quot;Restarting openHAB&amp;quot;
+        $0 stop
+        $0 start
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo &amp;quot;Usage: $N {start|stop|restart}&amp;quot; &amp;gt;&amp;amp;2
+        exit 1
+        ;;
+esac
+exit 0`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Make the script executable and configure to run on boot&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo chmod a+x /etc/init.d/openhab
+sudo update-rc.d openhab defaults&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Whenever you want to use the OSGI console, just type&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;screen -x&lt;/code&gt; and to leave the screen you do &lt;code&gt;ctrl+a d&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Normally your server should run now and you should be able to access the demo content through:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://&amp;lt;openHAB server ip&amp;gt;:8080/openhab.app?sitemap=demo&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[4_img_link]: /images/blogposts/openhab-logo.png&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
