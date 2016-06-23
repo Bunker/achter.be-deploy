@@ -33,7 +33,7 @@
 
 &lt;p&gt;To make sure that the info doesn&amp;rsquo;t get lost and for those having using hugo, unix and gandi simple hosting all combined, these are the steps necessary:&lt;/p&gt;
 
-&lt;h2 id=&#34;bash-script-for-automating-hugo-generation-and-git-commit-push:e19102061fb5c6b9a2b90417a4cbe015&#34;&gt;Bash script for automating hugo generation and git commit + push&lt;/h2&gt;
+&lt;h2 id=&#34;bash-script-for-automating-hugo-generation-and-git-commit-push&#34;&gt;Bash script for automating hugo generation and git commit + push&lt;/h2&gt;
 
 &lt;p&gt;First let&amp;rsquo;s make a bash script to automate the hugo build and the git commit and push.&lt;/p&gt;
 
@@ -64,7 +64,7 @@ git push
 
 &lt;p&gt;After a reboot or after manually adding the ~/bin path to your ~/.profile you should be able to run the script from everywhere on your system as yourself, however not as root, sudo or another user.&lt;/p&gt;
 
-&lt;h2 id=&#34;auto-deploy-github-to-simple-hosting:e19102061fb5c6b9a2b90417a4cbe015&#34;&gt;Auto deploy github to simple hosting&lt;/h2&gt;
+&lt;h2 id=&#34;auto-deploy-github-to-simple-hosting&#34;&gt;Auto deploy github to simple hosting&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Create a simple hosting instance, I had already one PHP/MYSQL version&lt;/li&gt;
@@ -156,7 +156,7 @@ echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the 
       <pubDate>Thu, 12 Nov 2015 01:53:50 +0100</pubDate>
       
       <guid>http://www.achter.be/blog/20151111_Arch_linux_boot_usb/</guid>
-      <description>&lt;p&gt;At the moment I&amp;rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&amp;rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&amp;rsquo;m using [this guide][1] as a basis. It&amp;rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.&lt;/p&gt;
+      <description>&lt;p&gt;At the moment I&amp;rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&amp;rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&amp;rsquo;m using &lt;a href=&#34;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&#34;&gt;this guide&lt;/a&gt; as a basis. It&amp;rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.&lt;/p&gt;
 
 &lt;p&gt;In the guide above we are going to follow the extended procedure. Because that way we are sure that every time we boot we have the correct stick.&lt;/p&gt;
 
@@ -282,8 +282,6 @@ echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the 
    |-mmcblk0p1 179:1    0  100M  0 part 
    `-mmcblk0p2 179:2    0  3.6G  0 part
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&#34;&gt;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -295,7 +293,7 @@ echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the 
       <guid>http://www.achter.be/blog/20150618_Arduino_nano_v3_OS_X_banggood/</guid>
       <description>
 
-&lt;p&gt;![ATmega328P Arduino Compatible Nano V3][6_img_link]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.achter.be/images/blogposts/arduino_nano_compatible.jpg&#34; alt=&#34;ATmega328P Arduino Compatible Nano V3&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;This worked at the moment of writing, I can&amp;rsquo;t guarantee it will work for future versions of the boards nor OS X&lt;/em&gt;&lt;/p&gt;
 
@@ -311,7 +309,7 @@ echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the 
 
 &lt;p&gt;I&amp;rsquo;m saying nothing new here, but just because it took me some time on google, I&amp;rsquo;m reblogging it here, for future reference and maybe help somebody else.&lt;/p&gt;
 
-&lt;h3 id=&#34;a-name-tldr-a-tutorial-for-install-on-mac-os-x-yosmite-latest-test-10-10-3:c7817d31109caaedaa9228da9f8ce4c2&#34;&gt;&lt;a name=&#34;TLDR&#34;&gt;&lt;/a&gt;Tutorial for install on Mac OS X Yosmite (latest test 10.10.3)&lt;/h3&gt;
+&lt;h3 id=&#34;a-name-tldr-a-tutorial-for-install-on-mac-os-x-yosmite-latest-test-10-10-3&#34;&gt;&lt;a name=&#34;TLDR&#34;&gt;&lt;/a&gt;Tutorial for install on Mac OS X Yosmite (latest test 10.10.3)&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Download the driver at &lt;a href=&#34;http://www.wch.cn/downloads.php?name=pro&amp;amp;proid=178&#34;&gt;the developers website&lt;/a&gt; (!! Only the driver from december 2013, works with 10.10)&lt;/li&gt;
@@ -321,8 +319,6 @@ echo &amp;quot;hello!&amp;quot;;                      // So you can confirm the 
 &lt;li&gt;Reboot&lt;/li&gt;
 &lt;li&gt;The driver should be installed, on my arduino&amp;rsquo;s it installed as /dev/cu.usbserialmodem1410 or /dev/cu.usbserialmodem1420 depending on the port it was connected to and the device I was using.&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;[6_img_link]: /images/blogposts/arduino_nano_compatible.jpg&lt;/p&gt;
 </description>
     </item>
     
@@ -356,11 +352,11 @@ git commit -m &amp;quot;fixed untracked files&amp;quot;
       <guid>http://www.achter.be/blog/20150610_openhab_raspberry_pi/</guid>
       <description>
 
-&lt;p&gt;![Openhab logo][4_img_link]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.achter.be/images/blogposts/openhab-logo.png&#34; alt=&#34;Openhab logo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This post is my guide for installing and configuring &lt;a href=&#34;http://www.openhab.org/&#34;&gt;Openhab&lt;/a&gt; on the &lt;a href=&#34;https://www.raspberrypi.org/&#34;&gt;Raspberry Pi&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h1 id=&#34;install-openhab:4ec75b23a0cd9226405c51e993ebc751&#34;&gt;Install openhab&lt;/h1&gt;
+&lt;h1 id=&#34;install-openhab&#34;&gt;Install openhab&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Upgrade and update apt-get
@@ -462,8 +458,6 @@ sudo update-rc.d openhab defaults&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;http://&amp;lt;openHAB server ip&amp;gt;:8080/openhab.app?sitemap=demo&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;[4_img_link]: /images/blogposts/openhab-logo.png&lt;/p&gt;
 </description>
     </item>
     
@@ -523,10 +517,8 @@ sudo update-rc.d openhab defaults&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;# Program_explanation
 
-
 description &amp;quot;Your_description&amp;quot;
 author &amp;quot;User&amp;quot;
-
 
 start on runlevel [2345]
 stop on runlevel [016]
@@ -548,7 +540,7 @@ respawn
       <guid>http://www.achter.be/20130109_review-backblaze-cloud-backup/</guid>
       <description>
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34; alt=&#34;Backblaze&#34; width=&#34;160&#34; height=&#34;52&#34; class=&#34;alignnone size-full wp-image-271&#34; /&gt;][1]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34; alt=&#34;Backblaze&#34; width=&#34;160&#34; height=&#34;52&#34; class=&#34;alignnone size-full wp-image-271&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Since I started using computers, I have had a mixed relation with backups. They are too much hassle to deal with, they fail, I didn&amp;rsquo;t have enough space. But since the internet connections are able to handle all data I produce now, I decided to start using cloud backup. I&amp;rsquo;v chosen &lt;a href=&#34;http://www.backblaze.com&#34; title=&#34;Online Backup &amp;#038; Data Backup Software&#34; rel=&#34;none&#34;&gt;Backblaze cloud backup&lt;/a&gt;.&lt;/p&gt;
 
@@ -556,7 +548,7 @@ respawn
 
 &lt;p&gt;The only easy way, was and still is by uploading everything, but the problem in Belgium was that there were up and download limits set by the providers. Even today on the &amp;#8220;unlimited&amp;#8221; packages there still is a kind of restriction, it is around 500 gb to 1TB a month depending on the area you live in.&lt;/p&gt;
 
-&lt;h4 id=&#34;why-backblaze:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;Why Backblaze?&lt;/h4&gt;
+&lt;h4 id=&#34;why-backblaze&#34;&gt;Why Backblaze?&lt;/h4&gt;
 
 &lt;p&gt;After extensively researching the different solutions, I decide to go with &lt;a href=&#34;http://www.backblaze.com&#34; title=&#34;Online Backup &amp;#038; Data Backup Software&#34; rel=&#34;none&#34;&gt;Backblaze&lt;/a&gt;, because of the following reasons:&lt;/p&gt;
 
@@ -570,7 +562,7 @@ respawn
 
 &lt;p&gt;As far as I found, there are no other services that offer all these options for that money.&lt;/p&gt;
 
-&lt;h4 id=&#34;how-does-it-work:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;How does it work?&lt;/h4&gt;
+&lt;h4 id=&#34;how-does-it-work&#34;&gt;How does it work?&lt;/h4&gt;
 
 &lt;p&gt;It works great, after subscribing and paying with your credit card, you download and install the program for your OS. Backblaze will start to upload data from your internal drives. If you want to add more drives, just select it in the preferences pane. If you have upload limits, you can choose to throttle the speed and Blackblaze gives you an estimate how much it will upload during a day.&lt;/p&gt;
 
@@ -583,21 +575,19 @@ respawn
 &lt;li&gt;Restored 35 GB in a zip-file&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;is-it-good:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;Is it good?&lt;/h4&gt;
+&lt;h4 id=&#34;is-it-good&#34;&gt;Is it good?&lt;/h4&gt;
 
 &lt;p&gt;Although it took almost 4 months of backing up, it was no hassle, Backblaze just worked. Restoring was just a matter of selecting the files I wanted, waiting for the zip to be generated and then downloading it.&lt;/p&gt;
 
 &lt;p&gt;But it&amp;rsquo;s not all good, the restore process sucks. You&amp;rsquo;ll get all your files back, but it&amp;rsquo;s up to you to put them all back where they belong. That&amp;rsquo;s no fun, let me tell you. You have to deal with permissions, finding the correct folder and so on. Another annoyance, is the fact that after the restore, my secondary internal drive was no longer recognized as being the same drive, so it had to be backed up again, like the replaced primary drive. Why?&lt;/p&gt;
 
-&lt;h4 id=&#34;conclusion:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;Conclusion?&lt;/h4&gt;
+&lt;h4 id=&#34;conclusion&#34;&gt;Conclusion?&lt;/h4&gt;
 
 &lt;p&gt;Backblaze is a great solution for an off site backup, but it takes a while to get all your data backed up, my suggestion let me send you guys a drive with my data for an extra cost, like crashplan does. When you have to restore, it&amp;rsquo;s all manual labour. I would suggest that they implement some sort of restore program that does most of the work for you.&lt;/p&gt;
 
 &lt;p&gt;Despite the remarks I have, I&amp;rsquo;m a satisfied &lt;a href=&#34;http://www.backblaze.com&#34; title=&#34;Online Backup &amp;#038; Data Backup Software&#34; rel=&#34;none&#34;&gt;Backblaze cloud backup&lt;/a&gt; user and would recommend it to everybody&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;I wasn’t forced to write this blogpost, everything in here is my own view, the content wasn’t reviewed by any departement of the brands mentioned in here&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34;&gt;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -609,7 +599,7 @@ respawn
       <guid>http://www.achter.be/20121020_review-kingston-3k-hyperx-ssd/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update: after 5 months this Kingston 3K hyperX SSD completely died on me&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34; alt=&#34;Kingston 3K HyperX SSD&#34; width=&#34;550&#34; class=&#34;alignnone size-full wp-image-267&#34; /&gt;][1]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34; alt=&#34;Kingston 3K HyperX SSD&#34; width=&#34;550&#34; class=&#34;alignnone size-full wp-image-267&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;At the end of june, my girflfriend (&lt;a href=&#34;http://www.saravdv.be&#34; rel=&#34;friend muse&#34; title=&#34;Saravdv: there are no endings, only new beginnings&#34;&gt;SaraVdV&lt;/a&gt;) got a mail from &lt;a href=&#34;http://www.kingston.com&#34; title=&#34;Kingston Technology&#34; rel=&#34;contact&#34;&gt;Kingston&lt;/a&gt; if she and I wanted to test a new SSD drive from Kingston.&lt;/p&gt;
 
@@ -630,8 +620,6 @@ respawn
 &lt;p&gt;The nicest surprise is that we may keep the drives, so I got a nice upgrade for my new MacBook thanks to Kingston.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;I wasn&amp;rsquo;t forced to write this blogpost, everything in here is my own view, the content wasn&amp;rsquo;t reviewed by any departement of the brands mentioned in here. I did however receive a compensation for this post. So decide for yourself how much value you want to attribute to this post.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34;&gt;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -707,7 +695,7 @@ respawn
 
 &lt;p&gt;The nx200 is a mirror less camera system, with some pretty decent lenses. I&amp;rsquo;ll list the pro and cons of the camera and will explain some a bit lower.&lt;/p&gt;
 
-&lt;h3 id=&#34;pro:dc02c572c8d9289a559f26ff553e8cc5&#34;&gt;Pro&lt;/h3&gt;
+&lt;h3 id=&#34;pro&#34;&gt;Pro&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Pretty high fps in RAW (4) even higher in JPEG (7)&lt;/li&gt;
@@ -719,7 +707,7 @@ respawn
 &lt;li&gt;Good form factor&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;con:dc02c572c8d9289a559f26ff553e8cc5&#34;&gt;Con&lt;/h3&gt;
+&lt;h3 id=&#34;con&#34;&gt;Con&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Lot&amp;rsquo;s of noise above ISO 800&lt;/li&gt;
@@ -730,17 +718,17 @@ respawn
 
 &lt;p&gt;That&amp;rsquo;s the very short version of my likes and dislikes of the Samsung NX200. So now let me get into that in more detail.&lt;/p&gt;
 
-&lt;h3 id=&#34;screen:dc02c572c8d9289a559f26ff553e8cc5&#34;&gt;Screen&lt;/h3&gt;
+&lt;h3 id=&#34;screen&#34;&gt;Screen&lt;/h3&gt;
 
 &lt;p&gt;The quality of the screen is great, even in harsh sunlight. However, because of no viewfinder and no swiveling screen, it&amp;rsquo;s not always very easy to compose a shot. You are limited to how you can look at the screen. This means no shots low by the ground, or high above your head, because composing is not possible if you don&amp;rsquo;t see the screen.&lt;/p&gt;
 
-&lt;h3 id=&#34;ease-of-use:dc02c572c8d9289a559f26ff553e8cc5&#34;&gt;Ease of use&lt;/h3&gt;
+&lt;h3 id=&#34;ease-of-use&#34;&gt;Ease of use&lt;/h3&gt;
 
 &lt;p&gt;Samsung always had a pretty good idea how to make a camera easy to use. The menu is clear, easy, logical. All the buttons are located very conveniently, at least for me they are. It&amp;rsquo;s a joy to use this camera.&lt;/p&gt;
 
 &lt;p&gt;However how hard Samsung keeps on trying to have me use the i-Function button on the lens, I don&amp;rsquo;t really care for it. It&amp;rsquo;s is one of their selling points since the nx100, it was made after the older rangefinder cameras where you could set almost everything on the lens. But where Samsung got it wrong for me, is that the button is never in the same place on the lenses. Also the first you use the button it doesn&amp;rsquo;t really react directly. Also the ring on the lens you can use to change the settings, is stepless, but the interface on the screen has steps, that&amp;rsquo;s confusing. So I prefer to use the buttons on top and on the back.&lt;/p&gt;
 
-&lt;h3 id=&#34;quality-and-speed:dc02c572c8d9289a559f26ff553e8cc5&#34;&gt;Quality and speed&lt;/h3&gt;
+&lt;h3 id=&#34;quality-and-speed&#34;&gt;Quality and speed&lt;/h3&gt;
 
 &lt;p&gt;A slow startup speed, makes that you better don&amp;rsquo;t use the battery saving feature, if you want to photograph your kids, make sure you keep it on all the time. However once started, the speed is very good, a very decent fps even in RAW. On the other hand, once you want to look at the photos, it can take quite some time before the RAW&amp;rsquo;s are processed. So speed overall is not good enough for me.&lt;/p&gt;
 
@@ -750,7 +738,7 @@ respawn
 
 &lt;p&gt;But there is a very big drawback, as with the first DSLR&amp;rsquo;s the camera, absolutely doesn&amp;rsquo;t perform well in low light conditions. For me in color the photos until 800 iso are acceptable, in b/w you can go up till 1600 but after that you&amp;rsquo;re out of luck. Too much noise, especially color noise.&lt;/p&gt;
 
-&lt;h3 id=&#34;conclusion:dc02c572c8d9289a559f26ff553e8cc5&#34;&gt;Conclusion&lt;/h3&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
 
 &lt;p&gt;I have mixed feelings about this camera. I do like the interface, but I don&amp;rsquo;t like the quality of the photos. So if you are looking for a small, interchangeable camera with most use being during the day or in studio settings, definitely go for it. If you are looking for an allround camera, don&amp;rsquo;t go for this one, there are better alternatives out there.&lt;/p&gt;
 </description>
@@ -772,7 +760,7 @@ respawn
 
 &lt;p&gt;Let&amp;rsquo;s get to the technical part of this article. How do you setup a network of 4 airports across the house on the same network with wpa2 security enabled? The first and most important step is to hard reset all the airports, the only way to do that if the airports don&amp;rsquo;t come straight from the box is to hold down the little reset button while pluggin in the airport. If you don&amp;rsquo;t know how, check this &lt;a href=&#34;http://support.apple.com/kb/ht3728&#34; title=&#34;Reset airport&#34; rel=&#34;none&#34;&gt;support-page&lt;/a&gt; on the &lt;a href=&#34;http://www.apple.com/&#34; title=&#34;Apple website&#34; rel=&#34;none&#34;&gt;Apple&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;configure-the-base-station-or-wds-main:f0747a94ba74626be30e9712b67e6fe6&#34;&gt;Configure the base station or WDS main&lt;/h3&gt;
+&lt;h3 id=&#34;configure-the-base-station-or-wds-main&#34;&gt;Configure the base station or WDS main&lt;/h3&gt;
 
 &lt;p&gt;You start by selecting manual configuration in the airport utility, don&amp;rsquo;t use the wizard, as you will not be able to setup WDS. On the next screen, you&amp;rsquo;ll see a couple of tabs, but none of them shows WDS, at least when you have a recent airport extreme.&lt;/p&gt;
 
@@ -791,19 +779,17 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 
 &lt;p&gt;That are all the steps for the configuring the base station.&lt;/p&gt;
 
-&lt;h3 id=&#34;configure-the-wds-remotes:f0747a94ba74626be30e9712b67e6fe6&#34;&gt;Configure the WDS remotes&lt;/h3&gt;
+&lt;h3 id=&#34;configure-the-wds-remotes&#34;&gt;Configure the WDS remotes&lt;/h3&gt;
 
 &lt;p&gt;For configuring the remotes, repeat steps 1 till 3 exactly as in configuring the WDS main station. Make sure you have all the wireless settings exactly the same, as for the WDS main station. Make sure you did not miss any setting and if you must choose a channel set it to 11, because otherwise the remote station can&amp;rsquo;t connect with the WDS main.&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2012-01-30 at 22.16.46&#34; width=&#34;500&#34; class=&#34;alignnone size-full wp-image-211&#34; /&gt;][4]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2012-01-30 at 22.16.46&#34; width=&#34;500&#34; class=&#34;alignnone size-full wp-image-211&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;To finish the setup, go to the WDS tab and choose for &amp;#8220;WDS remote&amp;#8221; in the drop down next to &amp;#8220;WDS Mode&amp;#8221;. Select the checkbox next to &amp;#8220;Allow wireless clients&amp;#8221; and fill in the Airport ID of the &amp;#8220;WDS main&amp;#8221;, update and test.&lt;/p&gt;
 
 &lt;p&gt;Repeat the steps for the airport remote for as many times you need it. You should now be able to use the network and if you activated airplay under &amp;#8220;Music&amp;#8221; you should be able to play music through every airport with boxes or a headphone connected.&lt;/p&gt;
 
 &lt;p&gt;A last piece of advice, if you configured a airport and it doesn&amp;rsquo;t connect or shows up, put in a ethernet cable so that you can access it again. This will save you a lot of time, because the only other option is hard resetting the airport.&lt;/p&gt;
-
-&lt;p&gt;[4]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34;&gt;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -815,13 +801,11 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
       <guid>http://www.achter.be/20111006_ithanksteve/</guid>
       <description>&lt;p&gt;This image on the homepage of &lt;a href=&#34;http://www.apple.com&#34; title=&#34;Apple&#34;&gt;Apple.com&lt;/a&gt;says it all.&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2011-10-06 at 01.54.24&#34; width=&#34;500&#34; class=&#34;aligncenter size-full wp-image-186&#34; /&gt;][2]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2011-10-06 at 01.54.24&#34; width=&#34;500&#34; class=&#34;aligncenter size-full wp-image-186&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you look at name apple gave the image, it gives you a very clear hint at how they see their founder. A hero, he was and still is one of my personal heroes.&lt;/p&gt;
 
 &lt;p&gt;But I will not mourn, I will honor his life as he did himself. Watch his commencement speech: &amp;#8220;How to live before you die&amp;#8221;&lt;/p&gt;
-
-&lt;p&gt;[2]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34;&gt;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -833,7 +817,7 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
       <guid>http://www.achter.be/20110930_logitech-magic/</guid>
       <description>&lt;p&gt;Yesterday, I got invited to the logitech magic event in Belgium together with some other bloggers. We rode out to Arquennes about 30 minutes from Brussels in Henegouwen. On arrival we were greeted with a glass of champagne and a short explanation of &lt;a href=&#34;http://www.twitter.com/wim_wauters&#34; title=&#34;Wim Wauters, on Twitter&#34; rel=&#34;contact met&#34;&gt;@wimwauters&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34; alt=&#34;&#34; title=&#34;ultimate-ears-600vi-noise-isolating-headset-glamour-images&#34; width=&#34;455&#34; height=&#34;500&#34; class=&#34;aligncenter size-full wp-image-178&#34; /&gt;][1]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34; alt=&#34;&#34; title=&#34;ultimate-ears-600vi-noise-isolating-headset-glamour-images&#34; width=&#34;455&#34; height=&#34;500&#34; class=&#34;aligncenter size-full wp-image-178&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We got a tour around all the different products and in the mean time, there was a contest organized. I saw some nice products, but the most are not suited for me, because I have a fondness of the keyboards and mice/trackpads from Apple. The keys are just nicer from apple then any other keyboard I have used. However the accessoires for the ipad were very interesting, sadly enough the most interesting ones, like the keyboard cover are not suited for my iPad 1. But I can understand why a company developing products for Apple lines, are developing for the current versions alone.&lt;/p&gt;
 
@@ -842,8 +826,6 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 &lt;p&gt;The range of prices was impressive, there was a surround system with a value of 350 euro to mice of 30 euro. But at least everybody got a price. I managed to get a set of Logitech 600vi in-ear phones. I&amp;rsquo;m currently testing them and I have to say the are amazingly great. These earphones are from the ultimate ear line, which is the same product line where a lot of professional musician are wearing headphones from during their concerts. The pair Sara and I got have a price value of 109 euro, which for me is very steep. That price means I would have never bought them myself, because I have a very bad track record with headphones. They tend to lay around and get tangled, ripped, get loose connections and so on.&lt;/p&gt;
 
 &lt;p&gt;These seem very nicely and sturdy designed, so we&amp;rsquo;ll see how they handle my abuse in the long run. The sound experience is quite impressive. I get a wide range of tones without any distortion or scrambling. The nice part is that there is a whole range of foam and plastic tips so you can choose the ones that fit your ear very nicely. I have a rather small ear channel and most tips don&amp;rsquo;t fit my ears, but the ones with the logitech ear phones actually fit my ear quite comfortable. I&amp;rsquo;m wearing them already several hours in a row, without getting any problems with having them falling out of my ear or without any discomfort. So my initial experience with these in-ear phones is very positive. So thanks a lot Logitech for a quite expensive goodie of good quality.&lt;/p&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34;&gt;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

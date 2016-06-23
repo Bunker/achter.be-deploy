@@ -25,7 +25,7 @@
 
 &lt;p&gt;Let&amp;rsquo;s get to the technical part of this article. How do you setup a network of 4 airports across the house on the same network with wpa2 security enabled? The first and most important step is to hard reset all the airports, the only way to do that if the airports don&amp;rsquo;t come straight from the box is to hold down the little reset button while pluggin in the airport. If you don&amp;rsquo;t know how, check this &lt;a href=&#34;http://support.apple.com/kb/ht3728&#34; title=&#34;Reset airport&#34; rel=&#34;none&#34;&gt;support-page&lt;/a&gt; on the &lt;a href=&#34;http://www.apple.com/&#34; title=&#34;Apple website&#34; rel=&#34;none&#34;&gt;Apple&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;configure-the-base-station-or-wds-main:f0747a94ba74626be30e9712b67e6fe6&#34;&gt;Configure the base station or WDS main&lt;/h3&gt;
+&lt;h3 id=&#34;configure-the-base-station-or-wds-main&#34;&gt;Configure the base station or WDS main&lt;/h3&gt;
 
 &lt;p&gt;You start by selecting manual configuration in the airport utility, don&amp;rsquo;t use the wizard, as you will not be able to setup WDS. On the next screen, you&amp;rsquo;ll see a couple of tabs, but none of them shows WDS, at least when you have a recent airport extreme.&lt;/p&gt;
 
@@ -44,19 +44,17 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 
 &lt;p&gt;That are all the steps for the configuring the base station.&lt;/p&gt;
 
-&lt;h3 id=&#34;configure-the-wds-remotes:f0747a94ba74626be30e9712b67e6fe6&#34;&gt;Configure the WDS remotes&lt;/h3&gt;
+&lt;h3 id=&#34;configure-the-wds-remotes&#34;&gt;Configure the WDS remotes&lt;/h3&gt;
 
 &lt;p&gt;For configuring the remotes, repeat steps 1 till 3 exactly as in configuring the WDS main station. Make sure you have all the wireless settings exactly the same, as for the WDS main station. Make sure you did not miss any setting and if you must choose a channel set it to 11, because otherwise the remote station can&amp;rsquo;t connect with the WDS main.&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2012-01-30 at 22.16.46&#34; width=&#34;500&#34; class=&#34;alignnone size-full wp-image-211&#34; /&gt;][4]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2012-01-30 at 22.16.46&#34; width=&#34;500&#34; class=&#34;alignnone size-full wp-image-211&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;To finish the setup, go to the WDS tab and choose for &amp;#8220;WDS remote&amp;#8221; in the drop down next to &amp;#8220;WDS Mode&amp;#8221;. Select the checkbox next to &amp;#8220;Allow wireless clients&amp;#8221; and fill in the Airport ID of the &amp;#8220;WDS main&amp;#8221;, update and test.&lt;/p&gt;
 
 &lt;p&gt;Repeat the steps for the airport remote for as many times you need it. You should now be able to use the network and if you activated airplay under &amp;#8220;Music&amp;#8221; you should be able to play music through every airport with boxes or a headphone connected.&lt;/p&gt;
 
 &lt;p&gt;A last piece of advice, if you configured a airport and it doesn&amp;rsquo;t connect or shows up, put in a ethernet cable so that you can access it again. This will save you a lot of time, because the only other option is hard resetting the airport.&lt;/p&gt;
-
-&lt;p&gt;[4]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34;&gt;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

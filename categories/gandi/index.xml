@@ -33,7 +33,7 @@
 
 &lt;p&gt;To make sure that the info doesn&amp;rsquo;t get lost and for those having using hugo, unix and gandi simple hosting all combined, these are the steps necessary:&lt;/p&gt;
 
-&lt;h2 id=&#34;bash-script-for-automating-hugo-generation-and-git-commit-push:e19102061fb5c6b9a2b90417a4cbe015&#34;&gt;Bash script for automating hugo generation and git commit + push&lt;/h2&gt;
+&lt;h2 id=&#34;bash-script-for-automating-hugo-generation-and-git-commit-push&#34;&gt;Bash script for automating hugo generation and git commit + push&lt;/h2&gt;
 
 &lt;p&gt;First let&amp;rsquo;s make a bash script to automate the hugo build and the git commit and push.&lt;/p&gt;
 
@@ -64,7 +64,7 @@ git push
 
 &lt;p&gt;After a reboot or after manually adding the ~/bin path to your ~/.profile you should be able to run the script from everywhere on your system as yourself, however not as root, sudo or another user.&lt;/p&gt;
 
-&lt;h2 id=&#34;auto-deploy-github-to-simple-hosting:e19102061fb5c6b9a2b90417a4cbe015&#34;&gt;Auto deploy github to simple hosting&lt;/h2&gt;
+&lt;h2 id=&#34;auto-deploy-github-to-simple-hosting&#34;&gt;Auto deploy github to simple hosting&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Create a simple hosting instance, I had already one PHP/MYSQL version&lt;/li&gt;

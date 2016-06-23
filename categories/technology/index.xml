@@ -17,7 +17,7 @@
       <guid>http://www.achter.be/20130109_review-backblaze-cloud-backup/</guid>
       <description>
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34; alt=&#34;Backblaze&#34; width=&#34;160&#34; height=&#34;52&#34; class=&#34;alignnone size-full wp-image-271&#34; /&gt;][1]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34; alt=&#34;Backblaze&#34; width=&#34;160&#34; height=&#34;52&#34; class=&#34;alignnone size-full wp-image-271&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Since I started using computers, I have had a mixed relation with backups. They are too much hassle to deal with, they fail, I didn&amp;rsquo;t have enough space. But since the internet connections are able to handle all data I produce now, I decided to start using cloud backup. I&amp;rsquo;v chosen &lt;a href=&#34;http://www.backblaze.com&#34; title=&#34;Online Backup &amp;#038; Data Backup Software&#34; rel=&#34;none&#34;&gt;Backblaze cloud backup&lt;/a&gt;.&lt;/p&gt;
 
@@ -25,7 +25,7 @@
 
 &lt;p&gt;The only easy way, was and still is by uploading everything, but the problem in Belgium was that there were up and download limits set by the providers. Even today on the &amp;#8220;unlimited&amp;#8221; packages there still is a kind of restriction, it is around 500 gb to 1TB a month depending on the area you live in.&lt;/p&gt;
 
-&lt;h4 id=&#34;why-backblaze:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;Why Backblaze?&lt;/h4&gt;
+&lt;h4 id=&#34;why-backblaze&#34;&gt;Why Backblaze?&lt;/h4&gt;
 
 &lt;p&gt;After extensively researching the different solutions, I decide to go with &lt;a href=&#34;http://www.backblaze.com&#34; title=&#34;Online Backup &amp;#038; Data Backup Software&#34; rel=&#34;none&#34;&gt;Backblaze&lt;/a&gt;, because of the following reasons:&lt;/p&gt;
 
@@ -39,7 +39,7 @@
 
 &lt;p&gt;As far as I found, there are no other services that offer all these options for that money.&lt;/p&gt;
 
-&lt;h4 id=&#34;how-does-it-work:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;How does it work?&lt;/h4&gt;
+&lt;h4 id=&#34;how-does-it-work&#34;&gt;How does it work?&lt;/h4&gt;
 
 &lt;p&gt;It works great, after subscribing and paying with your credit card, you download and install the program for your OS. Backblaze will start to upload data from your internal drives. If you want to add more drives, just select it in the preferences pane. If you have upload limits, you can choose to throttle the speed and Blackblaze gives you an estimate how much it will upload during a day.&lt;/p&gt;
 
@@ -52,21 +52,19 @@
 &lt;li&gt;Restored 35 GB in a zip-file&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;is-it-good:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;Is it good?&lt;/h4&gt;
+&lt;h4 id=&#34;is-it-good&#34;&gt;Is it good?&lt;/h4&gt;
 
 &lt;p&gt;Although it took almost 4 months of backing up, it was no hassle, Backblaze just worked. Restoring was just a matter of selecting the files I wanted, waiting for the zip to be generated and then downloading it.&lt;/p&gt;
 
 &lt;p&gt;But it&amp;rsquo;s not all good, the restore process sucks. You&amp;rsquo;ll get all your files back, but it&amp;rsquo;s up to you to put them all back where they belong. That&amp;rsquo;s no fun, let me tell you. You have to deal with permissions, finding the correct folder and so on. Another annoyance, is the fact that after the restore, my secondary internal drive was no longer recognized as being the same drive, so it had to be backed up again, like the replaced primary drive. Why?&lt;/p&gt;
 
-&lt;h4 id=&#34;conclusion:e148ee00a4cf976b17c9ce8fe109987d&#34;&gt;Conclusion?&lt;/h4&gt;
+&lt;h4 id=&#34;conclusion&#34;&gt;Conclusion?&lt;/h4&gt;
 
 &lt;p&gt;Backblaze is a great solution for an off site backup, but it takes a while to get all your data backed up, my suggestion let me send you guys a drive with my data for an extra cost, like crashplan does. When you have to restore, it&amp;rsquo;s all manual labour. I would suggest that they implement some sort of restore program that does most of the work for you.&lt;/p&gt;
 
 &lt;p&gt;Despite the remarks I have, I&amp;rsquo;m a satisfied &lt;a href=&#34;http://www.backblaze.com&#34; title=&#34;Online Backup &amp;#038; Data Backup Software&#34; rel=&#34;none&#34;&gt;Backblaze cloud backup&lt;/a&gt; user and would recommend it to everybody&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;I wasn’t forced to write this blogpost, everything in here is my own view, the content wasn’t reviewed by any departement of the brands mentioned in here&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&#34;&gt;http://www.achter.be/wp-content/uploads/2013/01/logo_backblaze.gif&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -78,7 +76,7 @@
       <guid>http://www.achter.be/20121020_review-kingston-3k-hyperx-ssd/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update: after 5 months this Kingston 3K hyperX SSD completely died on me&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34; alt=&#34;Kingston 3K HyperX SSD&#34; width=&#34;550&#34; class=&#34;alignnone size-full wp-image-267&#34; /&gt;][1]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34; alt=&#34;Kingston 3K HyperX SSD&#34; width=&#34;550&#34; class=&#34;alignnone size-full wp-image-267&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;At the end of june, my girflfriend (&lt;a href=&#34;http://www.saravdv.be&#34; rel=&#34;friend muse&#34; title=&#34;Saravdv: there are no endings, only new beginnings&#34;&gt;SaraVdV&lt;/a&gt;) got a mail from &lt;a href=&#34;http://www.kingston.com&#34; title=&#34;Kingston Technology&#34; rel=&#34;contact&#34;&gt;Kingston&lt;/a&gt; if she and I wanted to test a new SSD drive from Kingston.&lt;/p&gt;
 
@@ -99,8 +97,6 @@
 &lt;p&gt;The nicest surprise is that we may keep the drives, so I got a nice upgrade for my new MacBook thanks to Kingston.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;I wasn&amp;rsquo;t forced to write this blogpost, everything in here is my own view, the content wasn&amp;rsquo;t reviewed by any departement of the brands mentioned in here. I did however receive a compensation for this post. So decide for yourself how much value you want to attribute to this post.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&#34;&gt;http://www.achter.be/wp-content/uploads/2012/10/hyperx.jpg&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -120,7 +116,7 @@
 
 &lt;p&gt;Let&amp;rsquo;s get to the technical part of this article. How do you setup a network of 4 airports across the house on the same network with wpa2 security enabled? The first and most important step is to hard reset all the airports, the only way to do that if the airports don&amp;rsquo;t come straight from the box is to hold down the little reset button while pluggin in the airport. If you don&amp;rsquo;t know how, check this &lt;a href=&#34;http://support.apple.com/kb/ht3728&#34; title=&#34;Reset airport&#34; rel=&#34;none&#34;&gt;support-page&lt;/a&gt; on the &lt;a href=&#34;http://www.apple.com/&#34; title=&#34;Apple website&#34; rel=&#34;none&#34;&gt;Apple&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;configure-the-base-station-or-wds-main:f0747a94ba74626be30e9712b67e6fe6&#34;&gt;Configure the base station or WDS main&lt;/h3&gt;
+&lt;h3 id=&#34;configure-the-base-station-or-wds-main&#34;&gt;Configure the base station or WDS main&lt;/h3&gt;
 
 &lt;p&gt;You start by selecting manual configuration in the airport utility, don&amp;rsquo;t use the wizard, as you will not be able to setup WDS. On the next screen, you&amp;rsquo;ll see a couple of tabs, but none of them shows WDS, at least when you have a recent airport extreme.&lt;/p&gt;
 
@@ -139,19 +135,17 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 
 &lt;p&gt;That are all the steps for the configuring the base station.&lt;/p&gt;
 
-&lt;h3 id=&#34;configure-the-wds-remotes:f0747a94ba74626be30e9712b67e6fe6&#34;&gt;Configure the WDS remotes&lt;/h3&gt;
+&lt;h3 id=&#34;configure-the-wds-remotes&#34;&gt;Configure the WDS remotes&lt;/h3&gt;
 
 &lt;p&gt;For configuring the remotes, repeat steps 1 till 3 exactly as in configuring the WDS main station. Make sure you have all the wireless settings exactly the same, as for the WDS main station. Make sure you did not miss any setting and if you must choose a channel set it to 11, because otherwise the remote station can&amp;rsquo;t connect with the WDS main.&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2012-01-30 at 22.16.46&#34; width=&#34;500&#34; class=&#34;alignnone size-full wp-image-211&#34; /&gt;][4]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2012-01-30 at 22.16.46&#34; width=&#34;500&#34; class=&#34;alignnone size-full wp-image-211&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;To finish the setup, go to the WDS tab and choose for &amp;#8220;WDS remote&amp;#8221; in the drop down next to &amp;#8220;WDS Mode&amp;#8221;. Select the checkbox next to &amp;#8220;Allow wireless clients&amp;#8221; and fill in the Airport ID of the &amp;#8220;WDS main&amp;#8221;, update and test.&lt;/p&gt;
 
 &lt;p&gt;Repeat the steps for the airport remote for as many times you need it. You should now be able to use the network and if you activated airplay under &amp;#8220;Music&amp;#8221; you should be able to play music through every airport with boxes or a headphone connected.&lt;/p&gt;
 
 &lt;p&gt;A last piece of advice, if you configured a airport and it doesn&amp;rsquo;t connect or shows up, put in a ethernet cable so that you can access it again. This will save you a lot of time, because the only other option is hard resetting the airport.&lt;/p&gt;
-
-&lt;p&gt;[4]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&#34;&gt;http://www.achter.be/wp-content/uploads/2012/01/Screen-Shot-2012-01-30-at-22.16.46.png&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -163,13 +157,11 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
       <guid>http://www.achter.be/20111006_ithanksteve/</guid>
       <description>&lt;p&gt;This image on the homepage of &lt;a href=&#34;http://www.apple.com&#34; title=&#34;Apple&#34;&gt;Apple.com&lt;/a&gt;says it all.&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2011-10-06 at 01.54.24&#34; width=&#34;500&#34; class=&#34;aligncenter size-full wp-image-186&#34; /&gt;][2]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34; alt=&#34;&#34; title=&#34;Screen Shot 2011-10-06 at 01.54.24&#34; width=&#34;500&#34; class=&#34;aligncenter size-full wp-image-186&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you look at name apple gave the image, it gives you a very clear hint at how they see their founder. A hero, he was and still is one of my personal heroes.&lt;/p&gt;
 
 &lt;p&gt;But I will not mourn, I will honor his life as he did himself. Watch his commencement speech: &amp;#8220;How to live before you die&amp;#8221;&lt;/p&gt;
-
-&lt;p&gt;[2]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&#34;&gt;http://www.achter.be/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-01.54.24.png&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -181,7 +173,7 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
       <guid>http://www.achter.be/20110930_logitech-magic/</guid>
       <description>&lt;p&gt;Yesterday, I got invited to the logitech magic event in Belgium together with some other bloggers. We rode out to Arquennes about 30 minutes from Brussels in Henegouwen. On arrival we were greeted with a glass of champagne and a short explanation of &lt;a href=&#34;http://www.twitter.com/wim_wauters&#34; title=&#34;Wim Wauters, on Twitter&#34; rel=&#34;contact met&#34;&gt;@wimwauters&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34; alt=&#34;&#34; title=&#34;ultimate-ears-600vi-noise-isolating-headset-glamour-images&#34; width=&#34;455&#34; height=&#34;500&#34; class=&#34;aligncenter size-full wp-image-178&#34; /&gt;][1]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34; alt=&#34;&#34; title=&#34;ultimate-ears-600vi-noise-isolating-headset-glamour-images&#34; width=&#34;455&#34; height=&#34;500&#34; class=&#34;aligncenter size-full wp-image-178&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We got a tour around all the different products and in the mean time, there was a contest organized. I saw some nice products, but the most are not suited for me, because I have a fondness of the keyboards and mice/trackpads from Apple. The keys are just nicer from apple then any other keyboard I have used. However the accessoires for the ipad were very interesting, sadly enough the most interesting ones, like the keyboard cover are not suited for my iPad 1. But I can understand why a company developing products for Apple lines, are developing for the current versions alone.&lt;/p&gt;
 
@@ -190,8 +182,6 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 &lt;p&gt;The range of prices was impressive, there was a surround system with a value of 350 euro to mice of 30 euro. But at least everybody got a price. I managed to get a set of Logitech 600vi in-ear phones. I&amp;rsquo;m currently testing them and I have to say the are amazingly great. These earphones are from the ultimate ear line, which is the same product line where a lot of professional musician are wearing headphones from during their concerts. The pair Sara and I got have a price value of 109 euro, which for me is very steep. That price means I would have never bought them myself, because I have a very bad track record with headphones. They tend to lay around and get tangled, ripped, get loose connections and so on.&lt;/p&gt;
 
 &lt;p&gt;These seem very nicely and sturdy designed, so we&amp;rsquo;ll see how they handle my abuse in the long run. The sound experience is quite impressive. I get a wide range of tones without any distortion or scrambling. The nice part is that there is a whole range of foam and plastic tips so you can choose the ones that fit your ear very nicely. I have a rather small ear channel and most tips don&amp;rsquo;t fit my ears, but the ones with the logitech ear phones actually fit my ear quite comfortable. I&amp;rsquo;m wearing them already several hours in a row, without getting any problems with having them falling out of my ear or without any discomfort. So my initial experience with these in-ear phones is very positive. So thanks a lot Logitech for a quite expensive goodie of good quality.&lt;/p&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&#34;&gt;http://www.achter.be/wp-content/uploads/2011/09/ultimate-ears-600vi-noise-isolating-headset-glamour-images.png&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -201,7 +191,7 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
       <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
       
       <guid>http://www.achter.be/20110825_the-end-of-an-era-steve-jobs-steps-down-as-ceo-of-apple-inc/</guid>
-      <description>&lt;p&gt;[&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/08/steve-jobs1.jpeg&#34; alt=&#34;&#34; title=&#34;steve-jobs1&#34; width=&#34;229&#34; height=&#34;287&#34; class=&#34;aligncenter size-full wp-image-170&#34; /&gt;][1]&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/08/steve-jobs1.jpeg&#34;&gt;&lt;img src=&#34;http://www.achter.be/wp-content/uploads/2011/08/steve-jobs1.jpeg&#34; alt=&#34;&#34; title=&#34;steve-jobs1&#34; width=&#34;229&#34; height=&#34;287&#34; class=&#34;aligncenter size-full wp-image-170&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;As a huge Apple fanboy, it&amp;rsquo;s a very sad day for me. Steve Jobs just announced his resignation as a CEO of Apple inc. Below you find the most significant part from his resignation letter:&lt;/p&gt;
 
@@ -222,8 +212,6 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 &lt;p&gt;I hope that one day, I can look back at my life and say I made an impact, as did Steve Jobs, my personal hero business wise. It doesn&amp;rsquo;t has to be as significant as Steve&amp;rsquo;s impact, but I would like to know that I have done well according to my expectations.&lt;/p&gt;
 
 &lt;p&gt;So hereby I salute you, Steve, you are a great man and leader. Take care.&lt;/p&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;http://www.achter.be/wp-content/uploads/2011/08/steve-jobs1.jpeg&#34;&gt;http://www.achter.be/wp-content/uploads/2011/08/steve-jobs1.jpeg&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -253,13 +241,11 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
       <guid>http://www.achter.be/20101129_unboxing-the-garmin-forerunner-210/</guid>
       <description>&lt;p&gt;Last week I received the Garmin Forerunner 210 I ordered of &lt;a href=&#34;http://garmin.mijngpsshop.be&#34; title=&#34;Mijn gpsshop&#34;&gt;mijngpsshop.be&lt;/a&gt;. I made an unboxing movie, which you can see here.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://vimeo.com/17244907&#34;&gt;Unboxing Garmin Forerunner 210&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/pitslamp&#34;&gt;PitsLamp&lt;/a&gt; on [Vimeo][4].&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://vimeo.com/17244907&#34;&gt;Unboxing Garmin Forerunner 210&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/pitslamp&#34;&gt;PitsLamp&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I already trained twice with the forerunner 210 and it behaved as advertised, except for 1 thing. It does not calculate the calories I burn during the training. But after searching on the internet I found a solution for that. You have to hard reset the watch, because there is something wrong when you receive it from the factory, which makes that the user settings aren&amp;rsquo;t used during the training.&lt;/p&gt;
 
 &lt;p&gt;The hard reset procedure you need to perform is pressing the page/menu and lap/reset at the same time, and holding them until you see a prompt (about 3 seconds). This clears all data on the watch, it also clears your history so be aware that you upload the data first, before doing this reset.&lt;/p&gt;
-
-&lt;p&gt;[4]: &lt;a href=&#34;http://vimeo.com&#34;&gt;http://vimeo.com&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -277,9 +263,7 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 
 &lt;p&gt;Only time will tell if the navibot works for us, but that is the subject of another post. So now without further ado here is the unboxing video.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://vimeo.com/16573688&#34;&gt;Unboxing a Samsung Navibot VCR8855&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/pitslamp&#34;&gt;PitsLamp&lt;/a&gt; on [Vimeo][3].&lt;/p&gt;
-
-&lt;p&gt;[3]: &lt;a href=&#34;http://vimeo.com&#34;&gt;http://vimeo.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://vimeo.com/16573688&#34;&gt;Unboxing a Samsung Navibot VCR8855&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/pitslamp&#34;&gt;PitsLamp&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
@@ -387,9 +371,7 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 
 &lt;p&gt;You can check out the pictures at &lt;a href=&#34;http://www.flickr.com/photos/loneblackrider/sets/72157624333488195/&#34; title=&#34;Philips obsessed with sound set at flickr&#34; rel=&#34;me&#34;&gt;Flickr&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;I liked the event, I liked some of the products, but I&amp;rsquo;m not convinced they will take off with the high prices. I would have loved some more light to photograph the products. But thx [Talking Heads][4] and Philips for the invite and the Philips GoGear, which I will try to review a bitter later.&lt;/p&gt;
-
-&lt;p&gt;[4]: &lt;a href=&#34;http://www.talkingheads.be&#34;&gt;http://www.talkingheads.be&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I liked the event, I liked some of the products, but I&amp;rsquo;m not convinced they will take off with the high prices. I would have loved some more light to photograph the products. But thx &lt;a href=&#34;http://www.talkingheads.be&#34;&gt;Talking Heads&lt;/a&gt; and Philips for the invite and the Philips GoGear, which I will try to review a bitter later.&lt;/p&gt;
 </description>
     </item>
     
@@ -411,9 +393,7 @@ Fill in the Airport ID&amp;rsquo;s of the soon to be remotes, you find the airpo
 
 &lt;p&gt;But the most annoying thing is taking it out of your bag in Belgium. once you take it out to usef it, there&amp;rsquo;s always somebody who starts saying that there are better things to use, you can&amp;rsquo;t do this or that,&amp;#8230; Basically I like my iPad, it serves the purpose where I bought it for, so just let me use it and don&amp;rsquo;t think I&amp;rsquo;m taking it out to brag, I just want to use it.&lt;/p&gt;
 
-&lt;p&gt;Now I&amp;rsquo;m going to stop this blogpost so I can watch [chase jarvis live][2]&lt;/p&gt;
-
-&lt;p&gt;[2]: &lt;a href=&#34;http://www.chasejarvis.com/live&#34;&gt;http://www.chasejarvis.com/live&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now I&amp;rsquo;m going to stop this blogpost so I can watch &lt;a href=&#34;http://www.chasejarvis.com/live&#34;&gt;chase jarvis live&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -2,6 +2,7 @@
 <html lang="en-us">
 
 <head>
+	<meta name="generator" content="Hugo 0.16" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <title> achter.be &middot; achter.be </title>
@@ -84,7 +85,7 @@
 
 <p>To make sure that the info doesn&rsquo;t get lost and for those having using hugo, unix and gandi simple hosting all combined, these are the steps necessary:</p>
 
-<h2 id="bash-script-for-automating-hugo-generation-and-git-commit-push:e19102061fb5c6b9a2b90417a4cbe015">Bash script for automating hugo generation and git commit + push</h2>
+<h2 id="bash-script-for-automating-hugo-generation-and-git-commit-push">Bash script for automating hugo generation and git commit + push</h2>
 
 <p>First let&rsquo;s make a bash script to automate the hugo build and the git commit and push.</p>
 
@@ -115,7 +116,7 @@ git push
 
 <p>After a reboot or after manually adding the ~/bin path to your ~/.profile you should be able to run the script from everywhere on your system as yourself, however not as root, sudo or another user.</p>
 
-<h2 id="auto-deploy-github-to-simple-hosting:e19102061fb5c6b9a2b90417a4cbe015">Auto deploy github to simple hosting</h2>
+<h2 id="auto-deploy-github-to-simple-hosting">Auto deploy github to simple hosting</h2>
 
 <ul>
 <li>Create a simple hosting instance, I had already one PHP/MYSQL version</li>
@@ -237,7 +238,7 @@ echo &quot;hello!&quot;;                      // So you can confirm the file is 
 		  
 		  
 			<div class="content">
-				<p>At the moment I&rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&rsquo;m using [this guide][1] as a basis. It&rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.</p>
+				<p>At the moment I&rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&rsquo;m using <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=44177">this guide</a> as a basis. It&rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.</p>
 
 <p>In the guide above we are going to follow the extended procedure. Because that way we are sure that every time we boot we have the correct stick.</p>
 
@@ -364,8 +365,6 @@ echo &quot;hello!&quot;;                      // So you can confirm the file is 
    `-mmcblk0p2 179:2    0  3.6G  0 part
 </code></pre>
 
-<p>[1]: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=44177">https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=44177</a></p>
-
 			</div>
 		   
         </div>
@@ -390,7 +389,7 @@ echo &quot;hello!&quot;;                      // So you can confirm the file is 
 			<div class="content">
 				
 
-<p>![ATmega328P Arduino Compatible Nano V3][6_img_link]</p>
+<p><img src="/images/blogposts/arduino_nano_compatible.jpg" alt="ATmega328P Arduino Compatible Nano V3" /></p>
 
 <p><em>This worked at the moment of writing, I can&rsquo;t guarantee it will work for future versions of the boards nor OS X</em></p>
 
@@ -406,7 +405,7 @@ echo &quot;hello!&quot;;                      // So you can confirm the file is 
 
 <p>I&rsquo;m saying nothing new here, but just because it took me some time on google, I&rsquo;m reblogging it here, for future reference and maybe help somebody else.</p>
 
-<h3 id="a-name-tldr-a-tutorial-for-install-on-mac-os-x-yosmite-latest-test-10-10-3:c7817d31109caaedaa9228da9f8ce4c2"><a name="TLDR"></a>Tutorial for install on Mac OS X Yosmite (latest test 10.10.3)</h3>
+<h3 id="a-name-tldr-a-tutorial-for-install-on-mac-os-x-yosmite-latest-test-10-10-3"><a name="TLDR"></a>Tutorial for install on Mac OS X Yosmite (latest test 10.10.3)</h3>
 
 <ol>
 <li>Download the driver at <a href="http://www.wch.cn/downloads.php?name=pro&amp;proid=178">the developers website</a> (!! Only the driver from december 2013, works with 10.10)</li>
@@ -416,8 +415,6 @@ echo &quot;hello!&quot;;                      // So you can confirm the file is 
 <li>Reboot</li>
 <li>The driver should be installed, on my arduino&rsquo;s it installed as /dev/cu.usbserialmodem1410 or /dev/cu.usbserialmodem1420 depending on the port it was connected to and the device I was using.</li>
 </ol>
-
-<p>[6_img_link]: /images/blogposts/arduino_nano_compatible.jpg</p>
 
 			</div>
 		   

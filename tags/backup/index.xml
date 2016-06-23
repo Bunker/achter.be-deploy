@@ -15,7 +15,7 @@
       <pubDate>Thu, 12 Nov 2015 01:53:50 +0100</pubDate>
       
       <guid>http://www.achter.be/blog/20151111_Arch_linux_boot_usb/</guid>
-      <description>&lt;p&gt;At the moment I&amp;rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&amp;rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&amp;rsquo;m using [this guide][1] as a basis. It&amp;rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.&lt;/p&gt;
+      <description>&lt;p&gt;At the moment I&amp;rsquo;m setting up a backup system in Arch Linux and minimise the risk of sd-card corruption, I&amp;rsquo;m going to run the OS from a usb stick (you can also use an usb drive if you want). I&amp;rsquo;m using &lt;a href=&#34;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&#34;&gt;this guide&lt;/a&gt; as a basis. It&amp;rsquo;s meant for Raspbian, but I adapted the procedure below to Arch linux.&lt;/p&gt;
 
 &lt;p&gt;In the guide above we are going to follow the extended procedure. Because that way we are sure that every time we boot we have the correct stick.&lt;/p&gt;
 
@@ -141,8 +141,6 @@
    |-mmcblk0p1 179:1    0  100M  0 part 
    `-mmcblk0p2 179:2    0  3.6G  0 part
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;[1]: &lt;a href=&#34;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&#34;&gt;https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;amp;t=44177&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

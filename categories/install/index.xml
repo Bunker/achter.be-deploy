@@ -17,11 +17,11 @@
       <guid>http://www.achter.be/blog/20150610_openhab_raspberry_pi/</guid>
       <description>
 
-&lt;p&gt;![Openhab logo][4_img_link]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.achter.be/images/blogposts/openhab-logo.png&#34; alt=&#34;Openhab logo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This post is my guide for installing and configuring &lt;a href=&#34;http://www.openhab.org/&#34;&gt;Openhab&lt;/a&gt; on the &lt;a href=&#34;https://www.raspberrypi.org/&#34;&gt;Raspberry Pi&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h1 id=&#34;install-openhab:4ec75b23a0cd9226405c51e993ebc751&#34;&gt;Install openhab&lt;/h1&gt;
+&lt;h1 id=&#34;install-openhab&#34;&gt;Install openhab&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Upgrade and update apt-get
@@ -123,8 +123,6 @@ sudo update-rc.d openhab defaults&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;http://&amp;lt;openHAB server ip&amp;gt;:8080/openhab.app?sitemap=demo&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;[4_img_link]: /images/blogposts/openhab-logo.png&lt;/p&gt;
 </description>
     </item>
     
