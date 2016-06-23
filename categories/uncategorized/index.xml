@@ -65,10 +65,8 @@
 
 &lt;pre&gt;&lt;code&gt;# Program_explanation
 
-
 description &amp;quot;Your_description&amp;quot;
 author &amp;quot;User&amp;quot;
-
 
 start on runlevel [2345]
 stop on runlevel [016]
